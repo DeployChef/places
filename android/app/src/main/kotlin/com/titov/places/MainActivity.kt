@@ -1,4 +1,4 @@
-package com.example.places
+package com.titov.places
 
 import io.flutter.embedding.android.FlutterActivity
 
