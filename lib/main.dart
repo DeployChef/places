@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const App());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class App extends StatelessWidget {
+  const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Places',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyFirstStatfulWidget(),
+      home: MyFirstWidget(),
     );
   }
 }
@@ -23,12 +23,14 @@ class MyFirstWidget extends StatelessWidget {
   int _counter = 0;
   MyFirstWidget({Key? key}) : super(key: key);
 
+  //void getContext() => print('контекст: ${context.runtimeType}'); //Undefined name 'context'
+
   @override
   Widget build(BuildContext context) {
     _counter++;
     return Container(
         child: Center(
-      child: Text("Hello, counter is ${_counter}"),
+      child: Text("Hello"),
     ));
   }
 }
@@ -41,14 +43,14 @@ class MyFirstStatfulWidget extends StatefulWidget {
 }
 
 class _MyFirstStatfulWidgetState extends State<MyFirstStatfulWidget> {
-  int _counter = 0;
+  void getContext() => print('контекст: ${context.runtimeType}');
 
   @override
   Widget build(BuildContext context) {
-    _counter++;
+    getContext();
     return Container(
         child: Center(
-      child: Text("Hello, counter is ${_counter}"),
+      child: Text("Hello"),
     ));
   }
 }
