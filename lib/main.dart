@@ -34,23 +34,3 @@ class MyFirstWidget extends StatelessWidget {
     ));
   }
 }
-
-class MyFirstStatfulWidget extends StatefulWidget {
-  MyFirstStatfulWidget({Key? key}) : super(key: key);
-
-  @override
-  State<MyFirstStatfulWidget> createState() => _MyFirstStatfulWidgetState();
-}
-
-class _MyFirstStatfulWidgetState extends State<MyFirstStatfulWidget> {
-  void getContext() => print('контекст: ${context.runtimeType}');
-
-  @override
-  Widget build(BuildContext context) {
-    getContext();
-    return Container(
-        child: Center(
-      child: Text("Hello"),
-    ));
-  }
-}
