@@ -1,14 +1,6 @@
-.DS_Store
-.dart_tool/
-.packages
-.pub/
-*.lock
-.idea
-build/
-**/android/**/GeneratedPluginRegistrant.java
-ios/.generated/
-ios/Flutter/Generated.xcconfig
-ios/Runner/GeneratedPluginRegistrant.*
+# Fvm
+.fvm/flutter_sdk
+
 # Miscellaneous
 *.class
 *.log
@@ -19,13 +11,16 @@ ios/Runner/GeneratedPluginRegistrant.*
 .buildlog/
 .history
 .svn/
+
 # IntelliJ related
 *.iml
 *.ipr
 *.iws
 .idea/
+
 # Visual Studio Code related
 .vscode/
+
 # Flutter/Dart/Pub related
 **/doc/api/
 .dart_tool/
@@ -35,6 +30,8 @@ ios/Runner/GeneratedPluginRegistrant.*
 .pub/
 /build/
 *.lock
+.flutter-plugins-dependencies
+
 # Android related
 **/android/**/gradle-wrapper.jar
 **/android/.gradle
@@ -43,6 +40,7 @@ ios/Runner/GeneratedPluginRegistrant.*
 **/android/gradlew.bat
 **/android/local.properties
 **/android/**/GeneratedPluginRegistrant.java
+
 # iOS/XCode related
 **/ios/**/*.mode1v3
 **/ios/**/*.mode2v3
@@ -63,18 +61,16 @@ ios/Runner/GeneratedPluginRegistrant.*
 **/ios/Flutter/App.framework
 **/ios/Flutter/Flutter.framework
 **/ios/Flutter/Generated.xcconfig
-**/ios/Flutter/flutter_export_environment.sh
 **/ios/Flutter/app.flx
 **/ios/Flutter/app.zip
 **/ios/Flutter/flutter_assets/
+**/ios/Flutter/flutter_export_environment.sh
 **/ios/ServiceDefinitions.json
 **/ios/Runner/GeneratedPluginRegistrant.*
+
 # Exceptions to above rules.
 !**/ios/**/default.mode1v3
 !**/ios/**/default.mode2v3
 !**/ios/**/default.pbxuser
 !**/ios/**/default.perspectivev3
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
-# Support file for ci
-~changed_list_file
-packages/template/ios/Flutter/flutter_export_environment.sh
