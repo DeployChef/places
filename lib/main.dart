@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:places/ui/screen/sight_list_screen.dart';
 
 void main() {
   runApp(const App());
@@ -14,23 +15,7 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyFirstWidget(),
+      home: SightListScreen(),
     );
-  }
-}
-
-class MyFirstWidget extends StatelessWidget {
-  int _counter = 0;
-  MyFirstWidget({Key? key}) : super(key: key);
-
-  //void getContext() => print('контекст: ${context.runtimeType}'); //Undefined name 'context'
-
-  @override
-  Widget build(BuildContext context) {
-    _counter++;
-    return Container(
-        child: Center(
-      child: Text("Hello"),
-    ));
   }
 }
