@@ -29,7 +29,20 @@ class _SightListScreenState extends State<SightListScreen> {
           ),
         ),
       ),
-      body: SightCard(model: mocks[1]),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              SightCard(model: mocks[0]),
+              SightCard(model: mocks[1]),
+              SightCard(model: mocks[0]),
+              SightCard(model: mocks[1]),
+              SightCard(model: mocks[0]),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
