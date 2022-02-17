@@ -1,9 +1,14 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:places/domain/sight.dart';
 
 class SightCard extends StatelessWidget {
-  const SightCard
-({Key? key}) : super(key: key);
+  final Sight model;
+  final Color upCardColor = Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
+  
+  SightCard({Key? key, required this.model}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +21,7 @@ class SightCard extends StatelessWidget {
             children: [
               Container(
                 height: 96,
-                color: Colors.amber,
+                color: upCardColor,
                 child: Positioned.fill(
                   child: Stack(
                     children: [
@@ -24,9 +29,9 @@ class SightCard extends StatelessWidget {
                         alignment: Alignment.topLeft,
                         child: Container(
                           margin: const EdgeInsets.fromLTRB(16, 16, 0, 0),
-                          child: const Text(
-                            'музей',
-                            style: TextStyle(
+                          child: Text(
+                            model.type,
+                            style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                             ),
@@ -57,14 +62,14 @@ class SightCard extends StatelessWidget {
                     child: Column(
                       // ignore: prefer_const_literals_to_create_immutables
                       children: [
-                        const Text(
-                          'Воронежский областной краеведческий музей',
-                          style: TextStyle(fontSize: 18),
+                        Text(
+                          model.name,
+                          style: const TextStyle(fontSize: 18),
                         ),
-                        const Text(
-                          'краткое описание',
+                        Text(
+                          model.details,
                           textAlign: TextAlign.left,
-                          style: TextStyle(fontSize: 14),
+                          style: const TextStyle(fontSize: 14),
                         ),
                       ],
                     ),
