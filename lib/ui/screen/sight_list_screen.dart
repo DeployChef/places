@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:places/mocks.dart';
 import 'package:places/styles/color_constants.dart';
 import 'package:places/styles/styles.dart';
+import 'package:places/ui/screen/button.dart';
 import 'package:places/ui/screen/sight_card.dart';
 
 class SightListScreen extends StatefulWidget {
@@ -21,7 +22,7 @@ class _SightListScreenState extends State<SightListScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 40),
+          padding: EdgeInsets.only(right: 16, left: 16, top: 42),
           child: Text(
             'Список\nинтересных мест',
             style: largeTitleStyle,
