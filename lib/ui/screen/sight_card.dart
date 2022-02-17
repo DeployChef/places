@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:places/domain/sight.dart';
+import 'package:places/styles/styles.dart';
 
 class SightCard extends StatelessWidget {
   final Sight model;
@@ -53,8 +54,29 @@ class SightCard extends StatelessWidget {
             ),
             Container(
               height: 92,
+              width: double.infinity,
               color: const Color(0xffF5F5F5),
-            )
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      model.name,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                      style: text16Style,
+                    ),
+                    Text(
+                      model.details,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      style: text14Style,
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
