@@ -31,7 +31,7 @@ class _SightListScreenState extends State<SightListScreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16),
           child: Column(
             children: [
               SightCard(model: mocks[0]),

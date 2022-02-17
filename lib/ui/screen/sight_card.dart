@@ -13,8 +13,8 @@ class SightCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 190,
-        margin: const EdgeInsets.symmetric(horizontal: 16),
+        height: 188,
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10),
           child: Column(
