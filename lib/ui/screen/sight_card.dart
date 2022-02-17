@@ -6,79 +6,126 @@ import 'package:places/domain/sight.dart';
 
 class SightCard extends StatelessWidget {
   final Sight model;
-  final Color upCardColor = Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
-  
+  final Color upCardColor =
+      Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
+
   SightCard({Key? key, required this.model}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        height: 188,
-        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: Column(
-            children: [
-              Container(
-                height: 96,
-                color: upCardColor,
-                child: Positioned.fill(
-                  child: Stack(
-                    children: [
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: Container(
-                          margin: const EdgeInsets.fromLTRB(16, 16, 0, 0),
-                          child: Text(
-                            model.type,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.topRight,
-                        child: Container(
-                          margin: const EdgeInsets.fromLTRB(0, 16, 16, 0),
-                          child: const Icon(
-                            Icons.favorite_border_rounded,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10),
+        child: Column(
+          children: [
+            Stack(
+              children: [
+                Container(
+                  height: 96,
+                  color: upCardColor,
                 ),
-              ),
-              Container(
-                height: 94,
-                color: const Color(0xffF5F5F5),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                Align(
+                  alignment: Alignment.topLeft,
                   child: Container(
-                    color: Colors.blue,
-                    child: Column(
-                      // ignore: prefer_const_literals_to_create_immutables
-                      children: [
-                        Text(
-                          model.name,
-                          style: const TextStyle(fontSize: 18),
-                        ),
-                        Text(
-                          model.details,
-                          textAlign: TextAlign.left,
-                          style: const TextStyle(fontSize: 14),
-                        ),
-                      ],
+                    margin: const EdgeInsets.only(left: 16, top: 16),
+                    child: Text(
+                      model.type,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
+                Align(
+                  alignment: Alignment.topRight,
+                  child: Container(
+                    margin: const EdgeInsets.only(top: 16, right: 16),
+                    child: const Icon(
+                      Icons.favorite_border_rounded,
+                      color: Colors.white,
+                      size: 24,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Container(
+              height: 92,
+              color: const Color(0xffF5F5F5),
+            )
+          ],
         ),
-      );
+      ),
+    );
+    // return Container(
+    //     height: 188,
+    //     margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    //     child: ClipRRect(
+    //       borderRadius: BorderRadius.circular(10),
+    //       child: Column(
+    //         children: [
+    //           Container(
+    //             height: 96,
+    //             color: upCardColor,
+    //             child: Positioned.fill(
+    //               child: Stack(
+    //                 children: [
+    //                   Align(
+    //                     alignment: Alignment.topLeft,
+    //                     child: Container(
+    //                       margin: const EdgeInsets.fromLTRB(16, 16, 0, 0),
+    //                       child: Text(
+    //                         model.type,
+    //                         style: const TextStyle(
+    //                           color: Colors.white,
+    //                           fontWeight: FontWeight.bold,
+    //                         ),
+    //                       ),
+    //                     ),
+    //                   ),
+    //                   Align(
+    //                     alignment: Alignment.topRight,
+    //                     child: Container(
+    //                       margin: const EdgeInsets.fromLTRB(0, 16, 16, 0),
+    //                       child: const Icon(
+    //                         Icons.favorite_border_rounded,
+    //                         color: Colors.white,
+    //                       ),
+    //                     ),
+    //                   ),
+    //                 ],
+    //               ),
+    //             ),
+    //           ),
+    //           Container(
+    //             height: 94,
+    //             color: const Color(0xffF5F5F5),
+    //             child: Padding(
+    //               padding: const EdgeInsets.all(16.0),
+    //               child: Container(
+    //                 color: Colors.blue,
+    //                 child: Column(
+    //                   // ignore: prefer_const_literals_to_create_immutables
+    //                   children: [
+    //                     Text(
+    //                       model.name,
+    //                       style: const TextStyle(fontSize: 18),
+    //                     ),
+    //                     Text(
+    //                       model.details,
+    //                       textAlign: TextAlign.left,
+    //                       style: const TextStyle(fontSize: 14),
+    //                     ),
+    //                   ],
+    //                 ),
+    //               ),
+    //             ),
+    //           ),
+    //         ],
+    //       ),
+    //     ),
+    //   );
   }
 }
