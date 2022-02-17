@@ -1,13 +1,11 @@
-import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:places/domain/sight.dart';
+import 'package:places/helpers.dart';
 import 'package:places/styles/styles.dart';
 
 class SightCard extends StatelessWidget {
   final Sight model;
-  final Color upCardColor = Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
 
   SightCard({Key? key, required this.model}) : super(key: key);
 
@@ -23,7 +21,7 @@ class SightCard extends StatelessWidget {
               children: [
                 Container(
                   height: 96,
-                  color: upCardColor,
+                  color: Helpers.getRandomColor(),
                 ),
                 Align(
                   alignment: Alignment.topLeft,
