@@ -23,10 +23,80 @@ class SightDetails extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(16),
-                  child: Container(
-                    height: 1000,
-                    width: double.infinity,
-                    color: Helpers.getRandomColor(),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(model.name),
+                      Row(
+                        children: [
+                          Text(model.type),
+                          const Text('закрыто до 09:00'),
+                        ],
+                      ),
+                      Text(model.details),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Container(
+                          height: 48,
+                          width: double.infinity,
+                          color: const Color(0xff4CAF50),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              Icon(
+                                Icons.location_pin,
+                                color: Colors.white,
+                              ),
+                              SizedBox(
+                                width: 8,
+                              ),
+                              Text(
+                                'ПОСТРОИТЬ МАРШРУТ',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Divider(),
+                      SizedBox(
+                        height: 16,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.calendar_today,
+                                size: 24,
+                              ),
+                              SizedBox(
+                                width: 8,
+                              ),
+                              Text("Запланировать"),
+                            ],
+                          ),
+                          SizedBox(
+                            width: 38,
+                          ),
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.favorite_border_rounded,
+                                size: 24,
+                              ),
+                              SizedBox(
+                                width: 8,
+                              ),
+                              Text("В Избранное"),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -35,7 +105,7 @@ class SightDetails extends StatelessWidget {
           Align(
             alignment: Alignment.topLeft,
             child: Padding(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.only(top: 36, left: 16),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Container(

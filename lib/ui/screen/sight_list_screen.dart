@@ -3,7 +3,6 @@ import 'package:flutter/widgets.dart';
 import 'package:places/mocks.dart';
 import 'package:places/styles/color_constants.dart';
 import 'package:places/styles/styles.dart';
-import 'package:places/ui/screen/button.dart';
 import 'package:places/ui/screen/sight_card.dart';
 
 class SightListScreen extends StatefulWidget {
