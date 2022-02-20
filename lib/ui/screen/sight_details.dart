@@ -11,7 +11,9 @@ class SightDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const locateButtonTitle = 'ПОСТРОИТЬ МАРШРУТ';
+    const locateButtonText = 'ПОСТРОИТЬ МАРШРУТ';
+    const calendarButtonText = 'Запланировать';
+    const favoriteButtenText = 'В Избранное';
 
     return Scaffold(
       body: Stack(
@@ -75,7 +77,7 @@ class SightDetails extends StatelessWidget {
                                   width: 8,
                                 ),
                                 Text(
-                                  locateButtonTitle,
+                                  locateButtonText,
                                   style: textWightButton14Style,
                                 ),
                               ],
@@ -100,7 +102,10 @@ class SightDetails extends StatelessWidget {
                               SizedBox(
                                 width: 8,
                               ),
-                              Text('Запланировать', style: text14InactiveStyle,),
+                              Text(
+                                calendarButtonText,
+                                style: text14InactiveStyle,
+                              ),
                             ],
                           ),
                           const SizedBox(
@@ -116,7 +121,10 @@ class SightDetails extends StatelessWidget {
                               SizedBox(
                                 width: 8,
                               ),
-                              Text('В Избранное', style: text14Style,),
+                              Text(
+                                favoriteButtenText,
+                                style: text14Style,
+                              ),
                             ],
                           ),
                         ],
