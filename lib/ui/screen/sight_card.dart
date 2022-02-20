@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/helpers.dart';
+import 'package:places/styles/color_constants.dart';
 import 'package:places/styles/styles.dart';
 
 class SightCard extends StatelessWidget {
@@ -29,10 +29,7 @@ class SightCard extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 16, top: 16),
                     child: Text(
                       model.type,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: text14BoldStyle,
                     ),
                   ),
                 ),
@@ -52,7 +49,7 @@ class SightCard extends StatelessWidget {
             Container(
               height: 92,
               width: double.infinity,
-              color: Color(0xffF5F5F5),
+              color: cardBackground,
               child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: Column(

@@ -10,6 +10,15 @@ const largeTitleStyle = TextStyle(
 );
 
 
+const text24Style = TextStyle(
+  color: colorWhiteSecondary,
+  fontFamily: 'Roboto',
+  fontSize: 24.0,
+  height: 1.2,
+  fontWeight: FontWeight.w700,
+);
+
+
 const text16Style = TextStyle(
   color: colorWhiteSecondary,
   fontFamily: 'Roboto',
@@ -19,9 +28,50 @@ const text16Style = TextStyle(
 );
 
 const text14Style = TextStyle(
+  color: colorWhiteSecondary,
+  fontFamily: 'Roboto',
+  fontSize: 14.0,
+  height: 1.29,
+  fontWeight: FontWeight.w400,
+);
+
+const text14BoldStyle = TextStyle(
+  color: colorWhiteSecondary,
+  fontFamily: 'Roboto',
+  fontSize: 14.0,
+  height: 1.29,
+  fontWeight: FontWeight.w700,
+);
+
+const text14Secondary2Style = TextStyle(
   color: colorWhiteSecondary2,
   fontFamily: 'Roboto',
   fontSize: 14.0,
   height: 1.29,
   fontWeight: FontWeight.w400,
+);
+
+const text14InactiveStyle = TextStyle(
+  color: colorDisable,
+  fontFamily: 'Roboto',
+  fontSize: 14.0,
+  height: 1.29,
+  fontWeight: FontWeight.w400,
+);
+
+const text14BoldSecondary2Style = TextStyle(
+  color: colorWhiteSecondary2,
+  fontFamily: 'Roboto',
+  fontSize: 14.0,
+  height: 1.29,
+  fontWeight: FontWeight.w700,
+);
+
+const textWightButton14Style = TextStyle(
+  color: colorWhite,
+  fontFamily: 'Roboto',
+  fontSize: 14.0,
+  height: 1.29,
+  fontWeight: FontWeight.w700,
+  letterSpacing: 0.3,
 );

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/helpers.dart';
+import 'package:places/styles/color_constants.dart';
+import 'package:places/styles/styles.dart';
 
 class SightDetails extends StatelessWidget {
   final Sight model;
@@ -10,6 +11,8 @@ class SightDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const locateButtonTitle = 'ПОСТРОИТЬ МАРШРУТ';
+
     return Scaffold(
       body: Stack(
         children: [
@@ -22,76 +25,98 @@ class SightDetails extends StatelessWidget {
                   color: Helpers.getRandomColor(),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(16),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(model.name),
+                      Text(
+                        model.name,
+                        style: text24Style,
+                      ),
                       Row(
                         children: [
-                          Text(model.type),
-                          const Text('закрыто до 09:00'),
+                          Text(
+                            model.type,
+                            style: text14BoldStyle,
+                          ),
+                          const SizedBox(
+                            width: 16,
+                          ),
+                          const Text(
+                            'закрыто до 09:00',
+                            style: text14BoldSecondary2Style,
+                          ),
                         ],
                       ),
-                      Text(model.details),
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Container(
-                          height: 48,
-                          width: double.infinity,
-                          color: const Color(0xff4CAF50),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Icon(
-                                Icons.location_pin,
-                                color: Colors.white,
-                              ),
-                              SizedBox(
-                                width: 8,
-                              ),
-                              Text(
-                                'ПОСТРОИТЬ МАРШРУТ',
-                                style: TextStyle(
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 24),
+                        child: Text(
+                          model.details,
+                          style: text14Style,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 24),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Container(
+                            height: 48,
+                            width: double.infinity,
+                            color: const Color(0xff4CAF50),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                Icon(
+                                  Icons.location_pin,
                                   color: Colors.white,
                                 ),
-                              ),
-                            ],
+                                SizedBox(
+                                  width: 8,
+                                ),
+                                Text(
+                                  locateButtonTitle,
+                                  style: textWightButton14Style,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                      Divider(),
-                      SizedBox(
+                      const Divider(),
+                      const SizedBox(
                         height: 16,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Row(
-                            children: [
+                            children: const [
                               Icon(
                                 Icons.calendar_today,
+                                color: colorDisable,
                                 size: 24,
                               ),
                               SizedBox(
                                 width: 8,
                               ),
-                              Text("Запланировать"),
+                              Text('Запланировать', style: text14InactiveStyle,),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 38,
                           ),
                           Row(
-                            children: [
+                            children: const [
                               Icon(
                                 Icons.favorite_border_rounded,
                                 size: 24,
+                                color: colorWhiteSecondary,
                               ),
                               SizedBox(
                                 width: 8,
                               ),
-                              Text("В Избранное"),
+                              Text('В Избранное', style: text14Style,),
                             ],
                           ),
                         ],
