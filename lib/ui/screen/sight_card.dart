@@ -29,7 +29,7 @@ class SightCard extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 16, top: 16),
                     child: Text(
                       model.type,
-                      style: text14BoldStyle,
+                      style: AppTypography.text14BoldStyle,
                     ),
                   ),
                 ),
@@ -49,7 +49,7 @@ class SightCard extends StatelessWidget {
             Container(
               height: 92,
               width: double.infinity,
-              color: cardBackground,
+              color: AppColors.cardBackground,
               child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: Column(
@@ -59,7 +59,7 @@ class SightCard extends StatelessWidget {
                       model.name,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
-                      style: text16Style,
+                      style: AppTypography.text16Style,
                     ),
                     const SizedBox(
                       height: 2,
@@ -68,7 +68,7 @@ class SightCard extends StatelessWidget {
                       model.details,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
-                      style: text14Style,
+                      style: AppTypography.text14Style,
                     ),
                   ],
                 ),

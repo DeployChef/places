@@ -34,20 +34,20 @@ class SightDetails extends StatelessWidget {
                     children: [
                       Text(
                         model.name,
-                        style: text24Style,
+                        style: AppTypography.text24Style,
                       ),
                       Row(
                         children: [
                           Text(
                             model.type,
-                            style: text14BoldStyle,
+                            style: AppTypography.text14BoldStyle,
                           ),
                           const SizedBox(
                             width: 16,
                           ),
                           const Text(
                             'закрыто до 09:00',
-                            style: text14BoldSecondary2Style,
+                            style: AppTypography.text14BoldSecondary2Style,
                           ),
                         ],
                       ),
@@ -55,7 +55,7 @@ class SightDetails extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(vertical: 24),
                         child: Text(
                           model.details,
-                          style: text14Style,
+                          style: AppTypography.text14Style,
                         ),
                       ),
                       Padding(
@@ -78,7 +78,7 @@ class SightDetails extends StatelessWidget {
                                 ),
                                 Text(
                                   locateButtonText,
-                                  style: textWightButton14Style,
+                                  style: AppTypography.textWightButton14Style,
                                 ),
                               ],
                             ),
@@ -98,7 +98,7 @@ class SightDetails extends StatelessWidget {
                               children: const [
                                 Icon(
                                   Icons.calendar_today,
-                                  color: colorDisable,
+                                  color: AppColors.colorDisable,
                                   size: 24,
                                 ),
                                 SizedBox(
@@ -106,7 +106,7 @@ class SightDetails extends StatelessWidget {
                                 ),
                                 Text(
                                   calendarButtonText,
-                                  style: text14InactiveStyle,
+                                  style: AppTypography.text14InactiveStyle,
                                 ),
                               ],
                             ),
@@ -120,14 +120,14 @@ class SightDetails extends StatelessWidget {
                                 Icon(
                                   Icons.favorite_border_rounded,
                                   size: 24,
-                                  color: colorWhiteSecondary,
+                                  color: AppColors.colorWhiteSecondary,
                                 ),
                                 SizedBox(
                                   width: 8,
                                 ),
                                 Text(
                                   favoriteButtenText,
-                                  style: text14Style,
+                                  style: AppTypography.text14Style,
                                 ),
                               ],
                             ),
