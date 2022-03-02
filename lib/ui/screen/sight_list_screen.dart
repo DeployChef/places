@@ -31,13 +31,7 @@ class _SightListScreenState extends State<SightListScreen> {
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
-            children: [
-              SightCard(model: mocks[0]),
-              SightCard(model: mocks[1]),
-              SightCard(model: mocks[0]),
-              SightCard(model: mocks[1]),
-              SightCard(model: mocks[0]),
-            ],
+            children: mocks.map((e) => SightCard(model: e)).toList(),
           ),
         ),
       ),
