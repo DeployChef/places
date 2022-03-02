@@ -92,40 +92,45 @@ class SightDetails extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Row(
-                            children: const [
-                              Icon(
-                                Icons.calendar_today,
-                                color: colorDisable,
-                                size: 24,
-                              ),
-                              SizedBox(
-                                width: 8,
-                              ),
-                              Text(
-                                calendarButtonText,
-                                style: text14InactiveStyle,
-                              ),
-                            ],
+                          Expanded(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: const [
+                                Icon(
+                                  Icons.calendar_today,
+                                  color: colorDisable,
+                                  size: 24,
+                                ),
+                                SizedBox(
+                                  width: 8,
+                                ),
+                                Text(
+                                  calendarButtonText,
+                                  style: text14InactiveStyle,
+                                ),
+                              ],
+                            ),
                           ),
                           const SizedBox(
                             width: 38,
                           ),
-                          Row(
-                            children: const [
-                              Icon(
-                                Icons.favorite_border_rounded,
-                                size: 24,
-                                color: colorWhiteSecondary,
-                              ),
-                              SizedBox(
-                                width: 8,
-                              ),
-                              Text(
-                                favoriteButtenText,
-                                style: text14Style,
-                              ),
-                            ],
+                          Expanded(
+                            child: Row(
+                              children: const [
+                                Icon(
+                                  Icons.favorite_border_rounded,
+                                  size: 24,
+                                  color: colorWhiteSecondary,
+                                ),
+                                SizedBox(
+                                  width: 8,
+                                ),
+                                Text(
+                                  favoriteButtenText,
+                                  style: text14Style,
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
