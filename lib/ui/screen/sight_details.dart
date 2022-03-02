@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:places/domain/sight.dart';
-import 'package:places/helpers.dart';
 import 'package:places/styles/color_constants.dart';
 import 'package:places/styles/styles.dart';
+import 'package:places/utils/helpers.dart';
 
 class SightDetails extends StatelessWidget {
   final Sight model;

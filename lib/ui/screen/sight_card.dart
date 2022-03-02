@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:places/domain/sight.dart';
-import 'package:places/helpers.dart';
 import 'package:places/styles/color_constants.dart';
 import 'package:places/styles/styles.dart';
+import 'package:places/utils/helpers.dart';
 
 class SightCard extends StatelessWidget {
   final Sight model;
 
-  SightCard({Key? key, required this.model}) : super(key: key);
+  const SightCard({Key? key, required this.model}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
