@@ -52,28 +52,35 @@ class SightCard extends StatelessWidget {
                 height: 92,
                 width: double.infinity,
                 color: AppColors.cardBackground,
-                child: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        model.name,
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 2,
-                        style: AppTypography.text16Style,
+                child: Row(
+                  children: [
+                    SizedBox(
+                      height: 16,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            model.name,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 2,
+                            style: AppTypography.text16Style,
+                          ),
+                          const SizedBox(
+                            height: 2,
+                          ),
+                          Text(
+                            model.details,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                            style: AppTypography.text14Style,
+                          ),
+                        ],
                       ),
-                      const SizedBox(
-                        height: 2,
-                      ),
-                      Text(
-                        model.details,
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                        style: AppTypography.text14Style,
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ],
