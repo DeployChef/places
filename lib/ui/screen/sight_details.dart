@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/styles/color_constants.dart';
 import 'package:places/styles/styles.dart';
@@ -72,9 +73,7 @@ class DetailsContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const locateButtonText = 'ПОСТРОИТЬ МАРШРУТ';
-    const calendarButtonText = 'Запланировать';
-    const favoriteButtonText = 'В Избранное';
+    final locale = AppLocalizations.of(context)!;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
@@ -117,16 +116,16 @@ class DetailsContent extends StatelessWidget {
                 color: const Color(0xff4CAF50),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Icon(
+                  children: [
+                    const Icon(
                       Icons.location_pin,
                       color: Colors.white,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 8,
                     ),
                     Text(
-                      locateButtonText,
+                      locale.locateButtonText.toUpperCase(),
                       style: AppTypography.textWightButton14Style,
                     ),
                   ],
@@ -144,17 +143,17 @@ class DetailsContent extends StatelessWidget {
               Expanded(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: const [
-                    Icon(
+                  children: [
+                    const Icon(
                       Icons.calendar_today,
                       color: AppColors.colorDisable,
                       size: 24,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 8,
                     ),
                     Text(
-                      calendarButtonText,
+                      locale.calendarButtonText,
                       style: AppTypography.text14InactiveStyle,
                     ),
                   ],
@@ -165,17 +164,17 @@ class DetailsContent extends StatelessWidget {
               ),
               Expanded(
                 child: Row(
-                  children: const [
-                    Icon(
+                  children: [
+                    const Icon(
                       Icons.favorite_border_rounded,
                       size: 24,
                       color: AppColors.colorWhiteSecondary,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 8,
                     ),
                     Text(
-                      favoriteButtonText,
+                      locale.favoriteButtonText,
                       style: AppTypography.text14Style,
                     ),
                   ],
