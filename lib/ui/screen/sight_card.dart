@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/styles/color_constants.dart';
 import 'package:places/styles/styles.dart';
-import 'package:places/utils/helpers.dart';
 
 class SightCard extends StatelessWidget {
   final Sight model;
@@ -26,54 +25,13 @@ class SightCard extends StatelessWidget {
   }
 }
 
-class CardBottom extends StatelessWidget {
-  const CardBottom({
-    Key? key,
-    required this.model,
-  }) : super(key: key);
-
+class CardTop extends StatelessWidget {
   final Sight model;
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 92,
-      width: double.infinity,
-      color: AppColors.cardBackground,
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              model.name,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 2,
-              style: AppTypography.text16Style,
-            ),
-            const SizedBox(
-              height: 2,
-            ),
-            Text(
-              model.details,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
-              style: AppTypography.text14Style,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class CardTop extends StatelessWidget {
   const CardTop({
     Key? key,
     required this.model,
   }) : super(key: key);
-
-  final Sight model;
 
   @override
   Widget build(BuildContext context) {
@@ -109,21 +67,71 @@ class CardTop extends StatelessWidget {
 }
 
 class CardImage extends StatelessWidget {
+  final String imageUrl;
+
   const CardImage({
     Key? key,
     required this.imageUrl,
   }) : super(key: key);
 
-  final String imageUrl;
-
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 96,
       width: double.infinity,
       child: Image.network(
         imageUrl,
         fit: BoxFit.cover,
+        loadingBuilder: (context, child, loadingProgress) {
+          if (loadingProgress == null) return child;
+
+          return Center(
+            child: CircularProgressIndicator(
+              value: loadingProgress.expectedTotalBytes != null ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes! : null,
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class CardBottom extends StatelessWidget {
+  final Sight model;
+
+  const CardBottom({
+    Key? key,
+    required this.model,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 92,
+      width: double.infinity,
+      color: AppColors.cardBackground,
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              model.name,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
+              style: AppTypography.text16Style,
+            ),
+            const SizedBox(
+              height: 2,
+            ),
+            Text(
+              model.details,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+              style: AppTypography.text14Style,
+            ),
+          ],
+        ),
       ),
     );
   }
