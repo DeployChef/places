@@ -29,9 +29,7 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SightDetails(
-        model: mocks[0],
-      ),
+      home: SightListScreen(), //SightDetails(model: mocks[0]), //,
     );
   }
 }

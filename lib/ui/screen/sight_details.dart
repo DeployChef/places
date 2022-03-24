@@ -94,7 +94,7 @@ class DetailsContent extends StatelessWidget {
                 width: 16,
               ),
               const Text(
-                'закрыто до 09:00',
+                'закрыто до 09:00', // времено
                 style: AppTypography.text14BoldSecondary2Style,
               ),
             ],
@@ -138,49 +138,51 @@ class DetailsContent extends StatelessWidget {
             height: 16,
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Expanded(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    const Icon(
-                      Icons.calendar_today,
-                      color: AppColors.colorDisable,
-                      size: 24,
-                    ),
-                    const SizedBox(
-                      width: 8,
-                    ),
-                    Text(
-                      locale.calendarButtonText,
-                      style: AppTypography.text14InactiveStyle,
-                    ),
-                  ],
-                ),
+              IconButton(
+                text: locale.calendarButtonText,
+                icon: Icons.calendar_today_rounded,
               ),
-              const SizedBox(
-                width: 38,
-              ),
-              Expanded(
-                child: Row(
-                  children: [
-                    const Icon(
-                      Icons.favorite_border_rounded,
-                      size: 24,
-                      color: AppColors.colorWhiteSecondary,
-                    ),
-                    const SizedBox(
-                      width: 8,
-                    ),
-                    Text(
-                      locale.favoriteButtonText,
-                      style: AppTypography.text14Style,
-                    ),
-                  ],
-                ),
+              IconButton(
+                text: locale.favoriteButtonText,
+                icon: Icons.favorite_border_rounded,
               ),
             ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class IconButton extends StatelessWidget {
+  final String text;
+  final IconData icon;
+
+  const IconButton({
+    Key? key,
+    required this.text,
+    required this.icon,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            icon,
+            color: AppColors.colorDisable,
+            size: 24,
+          ),
+          const SizedBox(
+            width: 8,
+          ),
+          Text(
+            text,
+            style: AppTypography.text14InactiveStyle,
           ),
         ],
       ),

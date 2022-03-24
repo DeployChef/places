@@ -21,12 +21,14 @@ class _SightListScreenState extends State<SightListScreen> {
         toolbarHeight: 112.0,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Padding(
-          padding: const EdgeInsets.only(right: 16, left: 16, top: 42),
-          child: Text(
-            locale.detailsTitle,
-            style: AppTypography.largeTitleStyle,
-            textAlign: TextAlign.left,
+        flexibleSpace: Align(
+          alignment: Alignment.bottomLeft,
+          child: Container(
+            margin: EdgeInsets.only(left: 16, right: 16, bottom: 16),
+            child: Text(
+              locale.placesListTitle,
+              style: AppTypography.largeTitleStyle,
+            ),
           ),
         ),
       ),
