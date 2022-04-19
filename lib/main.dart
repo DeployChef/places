@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:places/mocks.dart';
 import 'package:places/ui/screen/sight_details.dart';
 import 'package:places/ui/screen/sight_list_screen.dart';
+import 'package:places/ui/screen/visiting_screen.dart';
 
 void main() {
   runApp(const App());
@@ -29,7 +30,7 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SightListScreen(), //SightDetails(model: mocks[0]), //,
+      home: VisitingScreen(), //SightDetails(model: mocks[0]), //,
     );
   }
 }
