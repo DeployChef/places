@@ -14,14 +14,20 @@ class SightCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
-      child: Column(
-        children: [
-          CardTop(
-            model: model,
-            cardType: cardType,
-          ),
-          CardBottom(model: model),
-        ],
+      child: Container(
+        color: AppColors.cardBackground,
+        child: Column(
+          children: [
+            CardTop(
+              model: model,
+              cardType: cardType,
+            ),
+            CardBottom(
+              model: model,
+              cardType: cardType,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -160,40 +166,66 @@ class CardImage extends StatelessWidget {
 
 class CardBottom extends StatelessWidget {
   final Sight model;
+  final CardType cardType;
 
   const CardBottom({
     Key? key,
     required this.model,
+    required this.cardType,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 92,
-      width: double.infinity,
-      color: AppColors.cardBackground,
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              model.name,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 2,
-              style: AppTypography.text16Style,
-            ),
-            const SizedBox(
-              height: 2,
-            ),
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            model.name,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 2,
+            style: AppTypography.text16Style,
+          ),
+          const SizedBox(
+            height: 2,
+            width: double.infinity,
+          ),
+          if (cardType == CardType.search) ...[
             Text(
               model.details,
+              style: AppTypography.text14Style,
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
-              style: AppTypography.text14Style,
             ),
           ],
-        ),
+          if (cardType == CardType.favourites) ...{
+            if (model.visited) ...[
+              Text(
+                'Посетил ${model.visitingDate}',
+                style: AppTypography.text14Style,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+              ),
+            ] else ...[
+              Text(
+                'Запланирова ${model.visitingDate}',
+                style: AppTypography.text14Style.copyWith(color: AppColors.colorWhiteGreen),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+              ),
+            ],
+            ...[
+              SizedBox(
+                height: 12,
+              ),
+              Text(
+                'закрыто до 09:00', // временно
+                style: AppTypography.text14Style,
+              ),
+            ],
+          },
+        ],
       ),
     );
   }

@@ -9,7 +9,7 @@ final List<Sight> mocks = <Sight>[
     type: 'музей',
     details: 'Музей, объектом деятельности которого является документация',
     visited: false,
-    date: '20 окт. 1993',
+    visitingDate: '20 окт. 1993',
   ),
   Sight(
     name: 'Памятник ленину (Ногинск)',
@@ -19,7 +19,7 @@ final List<Sight> mocks = <Sight>[
     type: 'Памятник',
     details: 'Первый памятник ленину',
     visited: true,
-    date: '20 окт. 1993',
+    visitingDate: '20 окт. 1993',
   ),
   Sight(
     name: 'Краеведческий музей',
@@ -29,6 +29,6 @@ final List<Sight> mocks = <Sight>[
     type: 'музей',
     details: 'Музей, объектом деятельности которого является документация',
     visited: true,
-    date: '20 окт. 1993',
+    visitingDate: '20 окт. 1993',
   ),
 ];

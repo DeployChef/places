@@ -6,7 +6,7 @@ class Sight {
   final String details;
   final String type;
   final bool visited;
-  final String? date;
+  final String visitingDate;
 
   Sight({
     required this.name,
@@ -16,6 +16,6 @@ class Sight {
     required this.details,
     required this.type,
     required this.visited,
-    this.date,
+    required this.visitingDate,
   });
 }
