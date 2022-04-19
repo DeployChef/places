@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:places/domain/enums/card_type.dart';
 import 'package:places/mocks.dart';
 import 'package:places/styles/color_constants.dart';
 import 'package:places/styles/styles.dart';
@@ -61,7 +62,12 @@ class VisitingScreen extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: Column(
-                  children: mocks.map((e) => SightCard(model: e)).toList(),
+                  children: mocks
+                      .map((e) => SightCard(
+                            model: e,
+                            cardType: CardType.favourites,
+                          ))
+                      .toList(),
                 ),
               ),
             ),
@@ -69,7 +75,12 @@ class VisitingScreen extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: Column(
-                  children: mocks.map((e) => SightCard(model: e)).toList(),
+                  children: mocks
+                      .map((e) => SightCard(
+                            model: e,
+                            cardType: CardType.favourites,
+                          ))
+                      .toList(),
                 ),
               ),
             ),
