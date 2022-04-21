@@ -5,6 +5,7 @@ import 'package:places/styles/color_constants.dart';
 import 'package:places/styles/styles.dart';
 import 'package:places/ui/components/bottom_navigaion_bar.dart';
 import 'package:places/ui/screen/sight_card.dart';
+import 'package:places/ui/screen/sight_card_list.dart';
 
 class VisitingScreen extends StatelessWidget {
   const VisitingScreen({Key? key}) : super(key: key);
@@ -58,32 +59,8 @@ class VisitingScreen extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  children: mocks
-                      .map((e) => SightCard(
-                            model: e,
-                            cardType: CardType.favourites,
-                          ))
-                      .toList(),
-                ),
-              ),
-            ),
-            SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  children: mocks
-                      .map((e) => SightCard(
-                            model: e,
-                            cardType: CardType.favourites,
-                          ))
-                      .toList(),
-                ),
-              ),
-            ),
+            SightCardList(sights: mocks.where((element) => !element.visited).toList(), cardType: CardType.favourites),
+            SightCardList(sights: mocks.where((element) => element.visited).toList(), cardType: CardType.favourites),
           ],
         ),
         bottomNavigationBar: MainBottomNavigationBar(

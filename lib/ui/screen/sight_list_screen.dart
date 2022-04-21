@@ -34,7 +34,7 @@ class _SightListScreenState extends State<SightListScreen> {
           ),
         ),
       ),
-      body: SightCardList(sights: mocks, cardType: CardType.favourites),
+      body: SightCardList(sights: mocks, cardType: CardType.search),
     );
   }
 }
