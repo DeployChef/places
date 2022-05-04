@@ -8,7 +8,7 @@ final List<Sight> mocks = <Sight>[
     url: 'https://upload.wikimedia.org/wikipedia/commons/4/49/Краеведческий_музей_%281%29.jpg',
     type: 'музей',
     details: 'Музей, объектом деятельности которого является документация',
-    visited: false,
+    visited: true,
     visitingDate: '20 окт. 1993',
   ),
   Sight(

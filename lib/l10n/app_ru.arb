@@ -2,5 +2,14 @@
     "placesListTitle": "Список\nинтересных мест",
     "locateButtonText": "ПОСТРОИТЬ МАРШРУТ",
     "calendarButtonText": "Запланировать",
-    "favoriteButtonText": "В Избранное"
+    "favoriteButtonText": "В Избранное",
+    "favoriteText": "Избранное",
+    "visitedText": "Цель достигнута",
+    "wantVisitText": "Запланировано на",
+    "closedText": "закрыто до",
+    "visitedTab": "Посетил",
+    "notVisitedTab": "Хочу посетить",
+    "blankHeader": "Пусто",
+    "blankTextVisited": "Завершите маршрут,\nчтобы место попало сюда.",
+    "blankTextNotVisited": "Отмечайте понравившиеся\nместа и они появятся здесь."
 }

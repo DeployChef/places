@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:places/domain/enums/card_type.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/styles/color_constants.dart';
@@ -83,8 +84,6 @@ class CardActions extends StatelessWidget {
   final CardType cardType;
   final bool visited;
 
-  const CardActions({Key? key, required this.cardType, required this.visited}) : super(key: key);
-
   static const _search = <Widget>[
     Icon(
       Icons.favorite_border,
@@ -120,6 +119,8 @@ class CardActions extends StatelessWidget {
       size: 24,
     ),
   ];
+
+  const CardActions({Key? key, required this.cardType, required this.visited}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -176,6 +177,8 @@ class CardBottom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final locale = AppLocalizations.of(context)!;
+
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Column(
@@ -202,25 +205,25 @@ class CardBottom extends StatelessWidget {
           if (cardType == CardType.favourites) ...{
             if (model.visited) ...[
               Text(
-                'Посетил ${model.visitingDate}',
+                '${locale.visitedText} ${model.visitingDate}',
                 style: AppTypography.text14Style,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
               ),
             ] else ...[
               Text(
-                'Запланирова ${model.visitingDate}',
+                '${locale.wantVisitText} ${model.visitingDate}',
                 style: AppTypography.text14Style.copyWith(color: AppColors.colorWhiteGreen),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
               ),
             ],
             ...[
-              SizedBox(
+              const SizedBox(
                 height: 12,
               ),
               Text(
-                'закрыто до 09:00', // временно
+                '${locale.closedText} 09:00', // временно
                 style: AppTypography.text14Style,
               ),
             ],
