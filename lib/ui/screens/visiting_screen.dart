@@ -5,7 +5,7 @@ import 'package:places/mocks.dart';
 import 'package:places/styles/color_constants.dart';
 import 'package:places/styles/styles.dart';
 import 'package:places/ui/components/bottom_navigaion_bar.dart';
-import 'package:places/ui/screen/sight_card_list.dart';
+import 'package:places/ui/screens/sight_card_list.dart';
 
 class VisitingScreen extends StatelessWidget {
   const VisitingScreen({Key? key}) : super(key: key);
