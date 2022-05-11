@@ -1,23 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:places/domain/enums/card_type.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/styles/color_constants.dart';
 import 'package:places/styles/styles.dart';
 
 class SightCard extends StatelessWidget {
   final Sight model;
+  final CardType cardType;
 
-  const SightCard({Key? key, required this.model}) : super(key: key);
+  const SightCard({Key? key, required this.model, required this.cardType}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(10),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(10),
+      child: Container(
+        color: AppColors.cardBackground,
         child: Column(
           children: [
-            CardTop(model: model),
-            CardBottom(model: model),
+            CardTop(
+              model: model,
+              cardType: cardType,
+            ),
+            CardBottom(
+              model: model,
+              cardType: cardType,
+            ),
           ],
         ),
       ),
@@ -27,10 +36,12 @@ class SightCard extends StatelessWidget {
 
 class CardTop extends StatelessWidget {
   final Sight model;
+  final CardType cardType;
 
   const CardTop({
     Key? key,
     required this.model,
+    required this.cardType,
   }) : super(key: key);
 
   @override
@@ -46,21 +57,79 @@ class CardTop extends StatelessWidget {
             padding: const EdgeInsets.only(left: 16, top: 16),
             child: Text(
               model.type,
-              style: AppTypography.text14BoldStyle,
+              style: AppTypography.text14BoldStyle.copyWith(color: AppColors.colorWhite),
             ),
           ),
         ),
-        const Align(
-          alignment: Alignment.topRight,
-          child: Padding(
-            padding: EdgeInsets.only(top: 16, right: 16),
-            child: Icon(
-              Icons.favorite_border_rounded,
-              color: Colors.white,
-              size: 24,
-            ),
+        Positioned(
+          top: 16,
+          left: 16,
+          right: 16,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              CardActions(
+                cardType: cardType,
+                visited: model.visited,
+              )
+            ],
           ),
         ),
+      ],
+    );
+  }
+}
+
+class CardActions extends StatelessWidget {
+  final CardType cardType;
+  final bool visited;
+
+  static const _search = <Widget>[
+    Icon(
+      Icons.favorite_border,
+      color: Colors.white,
+      size: 24,
+    ),
+  ];
+
+  static const _planned = <Widget>[
+    Icon(
+      Icons.calendar_today,
+      color: Colors.white,
+      size: 24,
+    ),
+    SizedBox(width: 16),
+    Icon(
+      Icons.close,
+      color: Colors.white,
+      size: 24,
+    ),
+  ];
+
+  static const _visited = <Widget>[
+    Icon(
+      Icons.share,
+      color: Colors.white,
+      size: 24,
+    ),
+    SizedBox(width: 16),
+    Icon(
+      Icons.close,
+      color: Colors.white,
+      size: 24,
+    ),
+  ];
+
+  const CardActions({Key? key, required this.cardType, required this.visited}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        if (cardType == CardType.search) ..._search,
+        if (cardType == CardType.favourites) ...{
+          if (visited) ..._visited else ..._planned,
+        },
       ],
     );
   }
@@ -98,40 +167,68 @@ class CardImage extends StatelessWidget {
 
 class CardBottom extends StatelessWidget {
   final Sight model;
+  final CardType cardType;
 
   const CardBottom({
     Key? key,
     required this.model,
+    required this.cardType,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 92,
-      width: double.infinity,
-      color: AppColors.cardBackground,
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              model.name,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 2,
-              style: AppTypography.text16Style,
-            ),
-            const SizedBox(
-              height: 2,
-            ),
+    final locale = AppLocalizations.of(context)!;
+
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            model.name,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 2,
+            style: AppTypography.text16Style,
+          ),
+          const SizedBox(
+            height: 2,
+            width: double.infinity,
+          ),
+          if (cardType == CardType.search) ...[
             Text(
               model.details,
+              style: AppTypography.text14Style,
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
-              style: AppTypography.text14Style,
             ),
           ],
-        ),
+          if (cardType == CardType.favourites) ...{
+            if (model.visited) ...[
+              Text(
+                '${locale.visitedText} ${model.visitingDate}',
+                style: AppTypography.text14Style,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+              ),
+            ] else ...[
+              Text(
+                '${locale.wantVisitText} ${model.visitingDate}',
+                style: AppTypography.text14Style.copyWith(color: AppColors.colorWhiteGreen),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+              ),
+            ],
+            ...[
+              const SizedBox(
+                height: 12,
+              ),
+              Text(
+                '${locale.closedText} 09:00', // временно
+                style: AppTypography.text14Style,
+              ),
+            ],
+          },
+        ],
       ),
     );
   }

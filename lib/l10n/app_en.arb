@@ -2,5 +2,14 @@
     "placesListTitle": "List of\ninteresting places",
     "locateButtonText": "BUILD A ROUTE",
     "calendarButtonText": "Schedule",
-    "favoriteButtonText": "To Favorites"
+    "favoriteButtonText": "To Favorites",
+    "favoriteText": "Favorites",
+    "visitedText": "Goal achieved",
+    "wantVisitText": "Scheduled for",
+    "closedText": "closed until",
+    "visitedTab": "Visited",
+    "notVisitedTab": "Want to visit",
+    "blankHeader": "Empty",
+    "blankTextVisited": "Complete the route\nto get the place here.",
+    "blankTextNotVisited": "Mark your favorite \nplaces and they will appear here."
 }

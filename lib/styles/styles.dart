@@ -18,6 +18,14 @@ class AppTypography {
     fontWeight: FontWeight.w700,
   );
 
+  static const text18Style = TextStyle(
+    color: AppColors.colorWhiteSecondary,
+    fontFamily: 'Roboto',
+    fontSize: 18.0,
+    height: 1.25,
+    fontWeight: FontWeight.w500,
+  );
+
   static const text16Style = TextStyle(
     color: AppColors.colorWhiteSecondary,
     fontFamily: 'Roboto',
