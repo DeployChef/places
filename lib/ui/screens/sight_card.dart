@@ -16,7 +16,7 @@ class SightCard extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: Container(
-        color: AppColors.cardBackground,
+        color: Theme.of(context).primaryColorLight,
         child: Column(
           children: [
             CardTop(
@@ -57,7 +57,7 @@ class CardTop extends StatelessWidget {
             padding: const EdgeInsets.only(left: 16, top: 16),
             child: Text(
               model.type,
-              style: AppTypography.text14BoldStyle.copyWith(color: AppColors.colorWhite),
+              style: Theme.of(context).textTheme.subtitle2,
             ),
           ),
         ),
@@ -188,7 +188,7 @@ class CardBottom extends StatelessWidget {
             model.name,
             overflow: TextOverflow.ellipsis,
             maxLines: 2,
-            style: AppTypography.text16Style,
+            style: Theme.of(context).textTheme.headline5,
           ),
           const SizedBox(
             height: 2,
@@ -197,7 +197,7 @@ class CardBottom extends StatelessWidget {
           if (cardType == CardType.search) ...[
             Text(
               model.details,
-              style: AppTypography.text14Style,
+              style: Theme.of(context).textTheme.bodyText2,
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
             ),
@@ -206,14 +206,14 @@ class CardBottom extends StatelessWidget {
             if (model.visited) ...[
               Text(
                 '${locale.visitedText} ${model.visitingDate}',
-                style: AppTypography.text14Style,
+                style: Theme.of(context).textTheme.bodyText2,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
               ),
             ] else ...[
               Text(
                 '${locale.wantVisitText} ${model.visitingDate}',
-                style: AppTypography.text14Style.copyWith(color: AppColors.colorWhiteGreen),
+                style: Theme.of(context).textTheme.bodyText1,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
               ),
@@ -224,7 +224,7 @@ class CardBottom extends StatelessWidget {
               ),
               Text(
                 '${locale.closedText} 09:00', // временно
-                style: AppTypography.text14Style,
+                style: Theme.of(context).textTheme.bodyText2,
               ),
             ],
           },

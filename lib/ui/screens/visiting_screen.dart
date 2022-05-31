@@ -25,7 +25,7 @@ class VisitingScreen extends StatelessWidget {
             child: Container(
               height: 40,
               margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(40), color: AppColors.cardBackground),
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(40), color: AppColors.colorBackground),
               child: Theme(
                 data: ThemeData(
                   splashColor: Colors.transparent,
@@ -34,9 +34,9 @@ class VisitingScreen extends StatelessWidget {
                 child: TabBar(
                   labelStyle: AppTypography.text14BoldStyle,
                   labelColor: AppColors.colorWhite,
-                  unselectedLabelColor: AppColors.colorWhiteSecondary.withOpacity(0.56),
+                  unselectedLabelColor: AppColors.colorSecondary.withOpacity(0.56),
                   indicatorSize: TabBarIndicatorSize.tab,
-                  indicator: BoxDecoration(borderRadius: BorderRadius.circular(40), color: AppColors.colorWhiteSecondary),
+                  indicator: BoxDecoration(borderRadius: BorderRadius.circular(40), color: AppColors.colorSecondary),
                   indicatorColor: Colors.transparent,
                   indicatorWeight: 0.1,
                   tabs: [
@@ -128,7 +128,7 @@ class Blank extends StatelessWidget {
           Icon(
             icon,
             size: 80,
-            color: AppColors.colorWhiteSecondary2,
+            color: AppColors.colorSecondary2,
           ),
           const SizedBox(
             height: 24,
@@ -136,7 +136,7 @@ class Blank extends StatelessWidget {
           Text(
             header,
             textAlign: TextAlign.center,
-            style: AppTypography.text24Style.copyWith(color: AppColors.colorWhiteSecondary2),
+            style: AppTypography.text24Style.copyWith(color: AppColors.colorSecondary2),
           ),
           const SizedBox(
             height: 8,

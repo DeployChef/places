@@ -174,7 +174,7 @@ class IconButton extends StatelessWidget {
         children: [
           Icon(
             icon,
-            color: AppColors.colorDisable,
+            color: AppColors.colorBlackMain,
             size: 24,
           ),
           const SizedBox(
