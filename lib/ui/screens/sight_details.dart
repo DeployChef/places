@@ -49,11 +49,12 @@ class BackButton extends StatelessWidget {
           child: Container(
             height: 32,
             width: 32,
-            color: Colors.white,
-            child: const Center(
+            color: Theme.of(context).scaffoldBackgroundColor,
+            child: Center(
               child: Icon(
                 Icons.arrow_back_ios_new_rounded,
                 size: 15,
+                color: Theme.of(context).colorScheme.onPrimary,
               ),
             ),
           ),
@@ -82,20 +83,20 @@ class DetailsContent extends StatelessWidget {
         children: [
           Text(
             model.name,
-            style: AppTypography.text24Style,
+            style: Theme.of(context).textTheme.headline4,
           ),
           Row(
             children: [
               Text(
                 model.type,
-                style: AppTypography.text14BoldStyle,
+                style: Theme.of(context).textTheme.subtitle1,
               ),
               const SizedBox(
                 width: 16,
               ),
-              const Text(
+              Text(
                 'закрыто до 09:00', // времено
-                style: AppTypography.text14BoldSecondary2Style,
+                style: Theme.of(context).textTheme.bodyText2,
               ),
             ],
           ),
@@ -103,7 +104,7 @@ class DetailsContent extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 24),
             child: Text(
               model.details,
-              style: AppTypography.text14Style,
+              style: Theme.of(context).textTheme.bodyText1,
             ),
           ),
           Padding(
@@ -113,20 +114,19 @@ class DetailsContent extends StatelessWidget {
               child: Container(
                 height: 48,
                 width: double.infinity,
-                color: const Color(0xff4CAF50),
+                color: Theme.of(context).accentColor,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Icon(
                       Icons.location_pin,
-                      color: Colors.white,
                     ),
                     const SizedBox(
                       width: 8,
                     ),
                     Text(
                       locale.locateButtonText.toUpperCase(),
-                      style: AppTypography.textWightButton14Style,
+                      style: Theme.of(context).textTheme.button,
                     ),
                   ],
                 ),
@@ -173,16 +173,14 @@ class IconButton extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
-            icon,
-            color: AppColors.colorBlackMain,
-            size: 24,
+            icon, //кнопка слева станет неактивной позже, сейчас перекрашивать отдельную кнопку смысла нет
           ),
           const SizedBox(
             width: 8,
           ),
           Text(
             text,
-            style: AppTypography.text14InactiveStyle,
+            style: Theme.of(context).primaryTextTheme.bodyText2,
           ),
         ],
       ),

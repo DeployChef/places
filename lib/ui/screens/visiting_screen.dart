@@ -32,7 +32,7 @@ class VisitingScreen extends StatelessWidget {
                   highlightColor: Colors.transparent,
                 ),
                 child: TabBar(
-                  labelStyle: AppTypography.text14BoldStyle,
+                  labelStyle: AppTypography.textButton,
                   labelColor: AppColors.colorWhite,
                   unselectedLabelColor: AppColors.colorSecondary.withOpacity(0.56),
                   indicatorSize: TabBarIndicatorSize.tab,
@@ -54,7 +54,7 @@ class VisitingScreen extends StatelessWidget {
           title: Align(
             child: Text(
               locale.favoriteText,
-              style: AppTypography.text18Style,
+              style: AppTypography.textButton,
             ),
           ),
         ),
@@ -136,7 +136,7 @@ class Blank extends StatelessWidget {
           Text(
             header,
             textAlign: TextAlign.center,
-            style: AppTypography.text24Style.copyWith(color: AppColors.colorSecondary2),
+            style: AppTypography.textButton.copyWith(color: AppColors.colorSecondary2),
           ),
           const SizedBox(
             height: 8,
@@ -144,7 +144,7 @@ class Blank extends StatelessWidget {
           Text(
             text,
             textAlign: TextAlign.center,
-            style: AppTypography.text14Secondary2Style,
+            style: AppTypography.textSmall14,
           ),
         ],
       ),
