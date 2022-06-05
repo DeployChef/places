@@ -213,7 +213,7 @@ class CardBottom extends StatelessWidget {
             ] else ...[
               Text(
                 '${locale.wantVisitText} ${model.visitingDate}',
-                style: Theme.of(context).textTheme.bodyText1,
+                style: Theme.of(context).primaryTextTheme.bodyText1,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
               ),

@@ -174,13 +174,14 @@ class IconButton extends StatelessWidget {
         children: [
           Icon(
             icon, //кнопка слева станет неактивной позже, сейчас перекрашивать отдельную кнопку смысла нет
+            color: Theme.of(context).colorScheme.onPrimary,
           ),
           const SizedBox(
             width: 8,
           ),
           Text(
             text,
-            style: Theme.of(context).primaryTextTheme.bodyText2,
+            style: Theme.of(context).textTheme.bodyText1,
           ),
         ],
       ),

@@ -18,7 +18,7 @@ final List<Sight> mocks = <Sight>[
     url: 'https://vsedomarossii.ru/photos/area_50/city_2225/street_3853/_20463_1.jpg',
     type: 'Памятник',
     details: 'Первый памятник ленину',
-    visited: true,
+    visited: false,
     visitingDate: '20 окт. 1993',
   ),
   Sight(
