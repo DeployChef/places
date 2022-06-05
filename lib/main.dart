@@ -29,7 +29,7 @@ class App extends StatelessWidget {
       ],
       title: 'Places',
       theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
       home: VisitingScreen(), //,
     );
   }
