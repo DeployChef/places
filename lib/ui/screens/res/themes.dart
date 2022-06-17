@@ -3,6 +3,7 @@ import 'package:places/styles/color_constants.dart';
 import 'package:places/styles/styles.dart';
 
 class AppTheme {
+  // ignore: long-method
   static ThemeData get lightTheme {
     final base = ThemeData.light();
 
@@ -19,39 +20,29 @@ class AppTheme {
         secondary: AppColors.lightSecondaryColor,
         secondaryVariant: AppColors.lightSecondaryVariant,
         onPrimary: AppColors.lightSecondaryColor,
+        primary: AppColors.lightButtonColorSplash,
       ),
       textTheme: TextTheme(
-        headline6: AppTypography.textSubtitle18
-            .copyWith(color: AppColors.lightPrimaryColorDark),
-        headline5: AppTypography.textText16
-            .copyWith(color: AppColors.lightSecondaryColor),
-        headline4: AppTypography.textTitle24
-            .copyWith(color: AppColors.lightSecondaryColor),
-        headline3: AppTypography.textLargeTitle32
-            .copyWith(color: AppColors.lightPrimaryColorDark),
-        subtitle1: AppTypography.textSmall14Bold
-            .copyWith(color: AppColors.lightSecondaryColor),
-        subtitle2: AppTypography.textSmall14Bold
-            .copyWith(color: AppColors.lightPrimaryColor),
-        bodyText1: AppTypography.textSmall14
-            .copyWith(color: AppColors.lightSecondaryColor),
-        bodyText2: AppTypography.textSmall14
-            .copyWith(color: AppColors.lightSecondaryVariant),
+        headline6: AppTypography.textSubtitle18.copyWith(color: AppColors.lightPrimaryColorDark),
+        headline5: AppTypography.textText16.copyWith(color: AppColors.lightSecondaryColor),
+        headline4: AppTypography.textTitle24.copyWith(color: AppColors.lightSecondaryColor),
+        headline3: AppTypography.textLargeTitle32.copyWith(color: AppColors.lightPrimaryColorDark),
+        subtitle1: AppTypography.textSmall14Bold.copyWith(color: AppColors.lightSecondaryColor),
+        subtitle2: AppTypography.textSmall14Bold.copyWith(color: AppColors.lightPrimaryColor),
+        bodyText1: AppTypography.textSmall14.copyWith(color: AppColors.lightSecondaryColor),
+        bodyText2: AppTypography.textSmall14.copyWith(color: AppColors.lightSecondaryVariant),
         button: AppTypography.textButton.copyWith(color: AppColors.lightPrimaryColor),
       ),
       primaryTextTheme: TextTheme(
-        headline6: AppTypography.textSubtitle18
-            .copyWith(color: AppColors.lightBackgroundColor),
-        bodyText1: AppTypography.textSmall14
-            .copyWith(color: AppColors.lightAccentColor),
-        bodyText2: AppTypography.textSmall14
-            .copyWith(color: AppColors.lightBackgroundColor),
+        headline6: AppTypography.textSubtitle18.copyWith(color: AppColors.lightBackgroundColor),
+        bodyText1: AppTypography.textSmall14.copyWith(color: AppColors.lightAccentColor),
+        bodyText2: AppTypography.textSmall14.copyWith(color: AppColors.lightBackgroundColor),
       ),
       buttonTheme: base.buttonTheme.copyWith(
         buttonColor: AppColors.lightButtonColor,
         textTheme: ButtonTextTheme.primary,
       ),
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         showSelectedLabels: false,
         showUnselectedLabels: false,
         type: BottomNavigationBarType.fixed,
@@ -76,6 +67,7 @@ class AppTheme {
     );
   }
 
+  // ignore: long-method
   static ThemeData get darkTheme {
     final base = ThemeData.dark();
 
@@ -90,39 +82,29 @@ class AppTheme {
         background: AppColors.darkBackgroundColor,
         secondary: AppColors.darkSecondaryColor,
         onPrimary: AppColors.colorWhite,
+        primary: AppColors.darkButtonColorSplash,
       ),
       buttonTheme: base.buttonTheme.copyWith(
         buttonColor: AppColors.colorBlackGreen,
         textTheme: ButtonTextTheme.primary,
       ),
       textTheme: TextTheme(
-        headline6:
-            AppTypography.textSubtitle18.copyWith(color: AppColors.colorWhite),
-        headline5:
-            AppTypography.textText16.copyWith(color: AppColors.colorWhite),
-        headline4:
-            AppTypography.textTitle24.copyWith(color: AppColors.colorWhite),
-        headline3: AppTypography.textLargeTitle32
-            .copyWith(color: AppColors.colorWhite),
-        subtitle1: AppTypography.textSmall14Bold
-            .copyWith(color: AppColors.darkSecondaryVariant),
-        subtitle2:
-            AppTypography.textSmall14Bold.copyWith(color: AppColors.colorWhite),
-        bodyText1:
-            AppTypography.textSmall14.copyWith(color: AppColors.colorWhite),
-        bodyText2: AppTypography.textSmall14
-            .copyWith(color: AppColors.darkBackgroundColor),
+        headline6: AppTypography.textSubtitle18.copyWith(color: AppColors.colorWhite),
+        headline5: AppTypography.textText16.copyWith(color: AppColors.colorWhite),
+        headline4: AppTypography.textTitle24.copyWith(color: AppColors.colorWhite),
+        headline3: AppTypography.textLargeTitle32.copyWith(color: AppColors.colorWhite),
+        subtitle1: AppTypography.textSmall14Bold.copyWith(color: AppColors.darkSecondaryVariant),
+        subtitle2: AppTypography.textSmall14Bold.copyWith(color: AppColors.colorWhite),
+        bodyText1: AppTypography.textSmall14.copyWith(color: AppColors.colorWhite),
+        bodyText2: AppTypography.textSmall14.copyWith(color: AppColors.darkBackgroundColor),
         button: AppTypography.textButton,
       ),
       primaryTextTheme: TextTheme(
-        headline6: AppTypography.textSubtitle18
-            .copyWith(color: AppColors.darkBackgroundColor),
-        bodyText1: AppTypography.textSmall14
-            .copyWith(color: AppColors.darkAccentColor),
-        bodyText2: AppTypography.textSmall14
-            .copyWith(color: AppColors.darkBackgroundColor),
+        headline6: AppTypography.textSubtitle18.copyWith(color: AppColors.darkBackgroundColor),
+        bodyText1: AppTypography.textSmall14.copyWith(color: AppColors.darkAccentColor),
+        bodyText2: AppTypography.textSmall14.copyWith(color: AppColors.darkBackgroundColor),
       ),
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         showSelectedLabels: false,
         showUnselectedLabels: false,
         type: BottomNavigationBarType.fixed,

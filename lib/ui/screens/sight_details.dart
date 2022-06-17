@@ -3,8 +3,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/styles/color_constants.dart';
 import 'package:places/styles/styles.dart';
+import 'package:places/ui/components/icons_svg.dart';
 import 'package:places/ui/screens/res/assets.dart';
-import 'package:places/components/icon_svg.dart';
 
 class SightDetails extends StatelessWidget {
   final Sight model;
@@ -112,49 +112,46 @@ class DetailsContent extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 24),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Container(
-                height: 48,
-                width: double.infinity,
-                color: Theme.of(context).accentColor,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(
-                      Icons.location_pin,
-                    ),
-                    const SizedBox(
-                      width: 8,
-                    ),
-                    Text(
-                      locale.locateButtonText.toUpperCase(),
-                      style: theme.textTheme.button,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 24),
             child: SizedBox(
               width: double.infinity,
               height: 48,
-              child: TextButton(
-                child: Row(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Stack(
                   children: [
-                    IconSvg(icon: icGo),
-                    Text(
-                      locale.locateButtonText.toUpperCase(),
-                      style: theme.textTheme.button,
+                    Positioned.fill(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: theme.accentColor,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 48,
+                      child: TextButton(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const IconSvg(
+                              icon: icGo,
+                            ),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            Text(
+                              locale.locateButtonText.toUpperCase(),
+                              style: theme.textTheme.button,
+                            ),
+                          ],
+                        ),
+                        onPressed: () {
+                          // ignore: avoid_print
+                          print('Press ${locale.locateButtonText}');
+                        },
+                      ),
                     ),
                   ],
                 ),
-                onPressed: () {
-                  // ignore: avoid_print
-                  print('Press ${locale.locateButtonText}');
-                },
               ),
             ),
           ),
