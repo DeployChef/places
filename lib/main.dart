@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:places/mocks.dart';
-import 'package:places/ui/screen/sight_details.dart';
-import 'package:places/ui/screen/sight_list_screen.dart';
-import 'package:places/ui/screen/visiting_screen.dart';
+import 'package:places/ui/screens/res/themes.dart';
+import 'package:places/ui/screens/sight_details.dart';
+import 'package:places/ui/screens/sight_list_screen.dart';
+import 'package:places/ui/screens/visiting_screen.dart';
 
 void main() {
   runApp(const App());
@@ -27,10 +28,9 @@ class App extends StatelessWidget {
         Locale('en', ''),
       ],
       title: 'Places',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: VisitingScreen(), //SightDetails(model: mocks[0]), //,
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      home: VisitingScreen(), //,
     );
   }
 }

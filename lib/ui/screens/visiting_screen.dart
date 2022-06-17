@@ -5,7 +5,7 @@ import 'package:places/mocks.dart';
 import 'package:places/styles/color_constants.dart';
 import 'package:places/styles/styles.dart';
 import 'package:places/ui/components/bottom_navigaion_bar.dart';
-import 'package:places/ui/screen/sight_card_list.dart';
+import 'package:places/ui/screens/sight_card_list.dart';
 
 class VisitingScreen extends StatelessWidget {
   const VisitingScreen({Key? key}) : super(key: key);
@@ -13,6 +13,7 @@ class VisitingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
 
     return DefaultTabController(
       length: 2,
@@ -25,20 +26,16 @@ class VisitingScreen extends StatelessWidget {
             child: Container(
               height: 40,
               margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(40), color: AppColors.cardBackground),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(40),
+                color: theme.primaryColorDark,
+              ),
               child: Theme(
-                data: ThemeData(
+                data: theme.copyWith(
                   splashColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                 ),
                 child: TabBar(
-                  labelStyle: AppTypography.text14BoldStyle,
-                  labelColor: AppColors.colorWhite,
-                  unselectedLabelColor: AppColors.colorWhiteSecondary.withOpacity(0.56),
-                  indicatorSize: TabBarIndicatorSize.tab,
-                  indicator: BoxDecoration(borderRadius: BorderRadius.circular(40), color: AppColors.colorWhiteSecondary),
-                  indicatorColor: Colors.transparent,
-                  indicatorWeight: 0.1,
                   tabs: [
                     Tab(
                       text: locale.notVisitedTab,
@@ -54,7 +51,7 @@ class VisitingScreen extends StatelessWidget {
           title: Align(
             child: Text(
               locale.favoriteText,
-              style: AppTypography.text18Style,
+              style: AppTypography.textButton,
             ),
           ),
         ),
@@ -128,7 +125,7 @@ class Blank extends StatelessWidget {
           Icon(
             icon,
             size: 80,
-            color: AppColors.colorWhiteSecondary2,
+            color: AppColors.colorSecondary2,
           ),
           const SizedBox(
             height: 24,
@@ -136,7 +133,7 @@ class Blank extends StatelessWidget {
           Text(
             header,
             textAlign: TextAlign.center,
-            style: AppTypography.text24Style.copyWith(color: AppColors.colorWhiteSecondary2),
+            style: AppTypography.textButton.copyWith(color: AppColors.colorSecondary2),
           ),
           const SizedBox(
             height: 8,
@@ -144,7 +141,7 @@ class Blank extends StatelessWidget {
           Text(
             text,
             textAlign: TextAlign.center,
-            style: AppTypography.text14Secondary2Style,
+            style: AppTypography.textSmall14,
           ),
         ],
       ),

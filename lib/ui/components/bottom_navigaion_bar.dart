@@ -9,10 +9,6 @@ class MainBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-      selectedItemColor: AppColors.colorWhiteMain,
-      unselectedItemColor: AppColors.colorWhiteSecondary,
       currentIndex: currentScreenIndex,
       items: const [
         BottomNavigationBarItem(
