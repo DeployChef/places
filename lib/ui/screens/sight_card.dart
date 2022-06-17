@@ -178,6 +178,7 @@ class CardBottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
 
     return Padding(
       padding: const EdgeInsets.all(16),
@@ -188,7 +189,7 @@ class CardBottom extends StatelessWidget {
             model.name,
             overflow: TextOverflow.ellipsis,
             maxLines: 2,
-            style: Theme.of(context).textTheme.headline5,
+            style: theme.textTheme.headline5,
           ),
           const SizedBox(
             height: 2,
@@ -197,7 +198,7 @@ class CardBottom extends StatelessWidget {
           if (cardType == CardType.search) ...[
             Text(
               model.details,
-              style: Theme.of(context).textTheme.bodyText2,
+              style: theme.textTheme.bodyText2,
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
             ),
@@ -206,14 +207,14 @@ class CardBottom extends StatelessWidget {
             if (model.visited) ...[
               Text(
                 '${locale.visitedText} ${model.visitingDate}',
-                style: Theme.of(context).textTheme.bodyText2,
+                style: theme.textTheme.bodyText2,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
               ),
             ] else ...[
               Text(
                 '${locale.wantVisitText} ${model.visitingDate}',
-                style: Theme.of(context).primaryTextTheme.bodyText1,
+                style: theme.primaryTextTheme.bodyText1,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
               ),
@@ -224,7 +225,7 @@ class CardBottom extends StatelessWidget {
               ),
               Text(
                 '${locale.closedText} 09:00', // временно
-                style: Theme.of(context).textTheme.bodyText2,
+                style: theme.textTheme.bodyText2,
               ),
             ],
           },

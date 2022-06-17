@@ -18,6 +18,7 @@ class _SightListScreenState extends State<SightListScreen> {
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -30,7 +31,7 @@ class _SightListScreenState extends State<SightListScreen> {
             margin: EdgeInsets.only(left: 16, right: 16, bottom: 16),
             child: Text(
               locale.placesListTitle,
-              style: Theme.of(context).textTheme.headline3,
+              style: theme.textTheme.headline3,
             ),
           ),
         ),

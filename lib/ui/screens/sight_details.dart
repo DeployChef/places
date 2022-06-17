@@ -75,6 +75,7 @@ class DetailsContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
@@ -83,20 +84,20 @@ class DetailsContent extends StatelessWidget {
         children: [
           Text(
             model.name,
-            style: Theme.of(context).textTheme.headline4,
+            style: theme.textTheme.headline4,
           ),
           Row(
             children: [
               Text(
                 model.type,
-                style: Theme.of(context).textTheme.subtitle1,
+                style: theme.textTheme.subtitle1,
               ),
               const SizedBox(
                 width: 16,
               ),
               Text(
                 'закрыто до 09:00', // времено
-                style: Theme.of(context).textTheme.bodyText2,
+                style: theme.textTheme.bodyText2,
               ),
             ],
           ),
@@ -104,7 +105,7 @@ class DetailsContent extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 24),
             child: Text(
               model.details,
-              style: Theme.of(context).textTheme.bodyText1,
+              style: theme.textTheme.bodyText1,
             ),
           ),
           Padding(
@@ -126,7 +127,7 @@ class DetailsContent extends StatelessWidget {
                     ),
                     Text(
                       locale.locateButtonText.toUpperCase(),
-                      style: Theme.of(context).textTheme.button,
+                      style: theme.textTheme.button,
                     ),
                   ],
                 ),
@@ -168,20 +169,22 @@ class IconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Expanded(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
             icon, //кнопка слева станет неактивной позже, сейчас перекрашивать отдельную кнопку смысла нет
-            color: Theme.of(context).colorScheme.onPrimary,
+            color: theme.colorScheme.onPrimary,
           ),
           const SizedBox(
             width: 8,
           ),
           Text(
             text,
-            style: Theme.of(context).textTheme.bodyText1,
+            style: theme.textTheme.bodyText1,
           ),
         ],
       ),

@@ -13,6 +13,7 @@ class VisitingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
 
     return DefaultTabController(
       length: 2,
@@ -27,10 +28,10 @@ class VisitingScreen extends StatelessWidget {
               margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(40),
-                color: Theme.of(context).primaryColorDark,
+                color: theme.primaryColorDark,
               ),
               child: Theme(
-                data: Theme.of(context).copyWith(
+                data: theme.copyWith(
                   splashColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                 ),
@@ -132,8 +133,7 @@ class Blank extends StatelessWidget {
           Text(
             header,
             textAlign: TextAlign.center,
-            style: AppTypography.textButton
-                .copyWith(color: AppColors.colorSecondary2),
+            style: AppTypography.textButton.copyWith(color: AppColors.colorSecondary2),
           ),
           const SizedBox(
             height: 8,
