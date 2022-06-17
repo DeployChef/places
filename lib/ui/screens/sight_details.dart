@@ -3,6 +3,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/styles/color_constants.dart';
 import 'package:places/styles/styles.dart';
+import 'package:places/ui/screens/res/assets.dart';
+import 'package:places/components/icon_svg.dart';
 
 class SightDetails extends StatelessWidget {
   final Sight model;
@@ -131,6 +133,28 @@ class DetailsContent extends StatelessWidget {
                     ),
                   ],
                 ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 24),
+            child: SizedBox(
+              width: double.infinity,
+              height: 48,
+              child: TextButton(
+                child: Row(
+                  children: [
+                    IconSvg(icon: icGo),
+                    Text(
+                      locale.locateButtonText.toUpperCase(),
+                      style: theme.textTheme.button,
+                    ),
+                  ],
+                ),
+                onPressed: () {
+                  // ignore: avoid_print
+                  print('Press ${locale.locateButtonText}');
+                },
               ),
             ),
           ),
