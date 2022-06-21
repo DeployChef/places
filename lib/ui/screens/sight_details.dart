@@ -112,47 +112,9 @@ class DetailsContent extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 24),
-            child: SizedBox(
-              width: double.infinity,
-              height: 48,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Stack(
-                  children: [
-                    Positioned.fill(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: theme.accentColor,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 48,
-                      child: TextButton(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const IconSvg(
-                              icon: icGo,
-                            ),
-                            const SizedBox(
-                              width: 8,
-                            ),
-                            Text(
-                              locale.locateButtonText.toUpperCase(),
-                              style: theme.textTheme.button,
-                            ),
-                          ],
-                        ),
-                        onPressed: () {
-                          // ignore: avoid_print
-                          print('Press ${locale.locateButtonText}');
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+            child: IconFlatButton(
+              text: locale.locateButtonText,
+              iconPath: icGo,
             ),
           ),
           const Divider(),
@@ -173,6 +135,65 @@ class DetailsContent extends StatelessWidget {
             ],
           ),
         ],
+      ),
+    );
+  }
+}
+
+class IconFlatButton extends StatelessWidget {
+  final String text;
+  final String iconPath;
+
+  const IconFlatButton({
+    Key? key,
+    required this.text,
+    required this.iconPath,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return SizedBox(
+      width: double.infinity,
+      height: 48,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10),
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: theme.accentColor,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 48,
+              child: TextButton(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconSvg(
+                      icon: iconPath,
+                    ),
+                    const SizedBox(
+                      width: 8,
+                    ),
+                    Text(
+                      text,
+                      style: theme.textTheme.button,
+                    ),
+                  ],
+                ),
+                onPressed: () {
+                  // ignore: avoid_print
+                  print('Press ${text}');
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
