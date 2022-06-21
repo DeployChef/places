@@ -46,18 +46,29 @@ class BackButton extends StatelessWidget {
       alignment: Alignment.topLeft,
       child: Padding(
         padding: const EdgeInsets.only(top: 36, left: 16),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: Container(
-            height: 32,
-            width: 32,
-            color: Theme.of(context).scaffoldBackgroundColor,
-            child: Center(
-              child: Icon(
-                Icons.arrow_back_ios_new_rounded,
-                size: 15,
-                color: Theme.of(context).colorScheme.onPrimary,
-              ),
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            maxHeight: 32,
+            maxWidth: 32,
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Stack(
+              children: [
+                Positioned.fill(
+                  child: Container(
+                    color: Theme.of(context).scaffoldBackgroundColor,
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: Icon(
+                    Icons.arrow_back_ios_new_rounded,
+                    size: 15,
+                    color: Theme.of(context).colorScheme.onPrimary,
+                  ),
+                )
+              ],
             ),
           ),
         ),
