@@ -4,6 +4,8 @@ import 'package:places/domain/enums/card_type.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/styles/color_constants.dart';
 import 'package:places/styles/styles.dart';
+import 'package:places/ui/components/icons_svg.dart';
+import 'package:places/ui/screens/res/assets.dart';
 
 class SightCard extends StatelessWidget {
   final Sight model;
@@ -62,17 +64,11 @@ class CardTop extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: 16,
-          left: 16,
+          top: 8,
           right: 16,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              CardActions(
-                cardType: cardType,
-                visited: model.visited,
-              )
-            ],
+          child: CardActions(
+            cardType: cardType,
+            visited: model.visited,
           ),
         ),
       ],
@@ -84,11 +80,9 @@ class CardActions extends StatelessWidget {
   final CardType cardType;
   final bool visited;
 
-  static const _search = <Widget>[
-    Icon(
-      Icons.favorite_border,
-      color: Colors.white,
-      size: 24,
+  static final _search = <Widget>[
+    IconActionButton(
+      iconPath: icFavorites,
     ),
   ];
 
@@ -125,12 +119,41 @@ class CardActions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
         if (cardType == CardType.search) ..._search,
         if (cardType == CardType.favourites) ...{
           if (visited) ..._visited else ..._planned,
         },
       ],
+    );
+  }
+}
+
+class IconActionButton extends StatelessWidget {
+  String iconPath;
+
+  IconActionButton({
+    Key? key,
+    required this.iconPath,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 32,
+      width: 32,
+      child: TextButton(
+        style: TextButton.styleFrom(
+          minimumSize: Size(24, 24),
+          padding: EdgeInsets.zero,
+          shape: CircleBorder(),
+        ),
+        onPressed: () {},
+        child: IconSvg(
+          icon: iconPath,
+        ),
+      ),
     );
   }
 }
