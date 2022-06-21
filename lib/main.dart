@@ -30,7 +30,9 @@ class App extends StatelessWidget {
       title: 'Places',
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      home: SightListScreen(), //,
+      home: SightDetails(
+        model: mocks[0],
+      ), //,
     );
   }
 }
