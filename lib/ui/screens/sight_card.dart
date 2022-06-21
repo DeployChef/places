@@ -4,6 +4,7 @@ import 'package:places/domain/enums/card_type.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/styles/color_constants.dart';
 import 'package:places/styles/styles.dart';
+import 'package:places/ui/components/icon_action_button.dart';
 import 'package:places/ui/components/icons_svg.dart';
 import 'package:places/ui/screens/res/assets.dart';
 
@@ -83,34 +84,46 @@ class CardActions extends StatelessWidget {
   static final _search = <Widget>[
     IconActionButton(
       iconPath: icFavorites,
+      onPressed: () {
+        // ignore: avoid_print
+        print('Press heart');
+      },
     ),
   ];
 
-  static const _planned = <Widget>[
-    Icon(
-      Icons.calendar_today,
-      color: Colors.white,
-      size: 24,
+  static final _planned = <Widget>[
+    IconActionButton(
+      iconPath: icCalendar,
+      onPressed: () {
+        // ignore: avoid_print
+        print('Press calendar');
+      },
     ),
     SizedBox(width: 16),
-    Icon(
-      Icons.close,
-      color: Colors.white,
-      size: 24,
+    IconActionButton(
+      iconPath: icDelete,
+      onPressed: () {
+        // ignore: avoid_print
+        print('Press delete');
+      },
     ),
   ];
 
-  static const _visited = <Widget>[
-    Icon(
-      Icons.share,
-      color: Colors.white,
-      size: 24,
+  static final _visited = <Widget>[
+    IconActionButton(
+      iconPath: icShare,
+      onPressed: () {
+        // ignore: avoid_print
+        print('Press share');
+      },
     ),
     SizedBox(width: 16),
-    Icon(
-      Icons.close,
-      color: Colors.white,
-      size: 24,
+    IconActionButton(
+      iconPath: icDelete,
+      onPressed: () {
+        // ignore: avoid_print
+        print('Press delete');
+      },
     ),
   ];
 
@@ -126,34 +139,6 @@ class CardActions extends StatelessWidget {
           if (visited) ..._visited else ..._planned,
         },
       ],
-    );
-  }
-}
-
-class IconActionButton extends StatelessWidget {
-  String iconPath;
-
-  IconActionButton({
-    Key? key,
-    required this.iconPath,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 32,
-      width: 32,
-      child: TextButton(
-        style: TextButton.styleFrom(
-          minimumSize: Size(24, 24),
-          padding: EdgeInsets.zero,
-          shape: CircleBorder(),
-        ),
-        onPressed: () {},
-        child: IconSvg(
-          icon: iconPath,
-        ),
-      ),
     );
   }
 }

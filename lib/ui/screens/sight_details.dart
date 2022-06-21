@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/styles/color_constants.dart';
 import 'package:places/styles/styles.dart';
+import 'package:places/ui/components/icon_colored_button.dart';
 import 'package:places/ui/components/icons_svg.dart';
 import 'package:places/ui/screens/res/assets.dart';
 
@@ -61,7 +62,10 @@ class BackButton extends StatelessWidget {
                   ),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    // ignore: avoid_print
+                    print('Press back');
+                  },
                   child: Icon(
                     Icons.arrow_back_ios_new_rounded,
                     size: 15,
@@ -126,6 +130,10 @@ class DetailsContent extends StatelessWidget {
             child: IconColoredButton(
               text: locale.locateButtonText,
               iconPath: icGo,
+              onPressed: () {
+                // ignore: avoid_print
+                print('Press ${locale.locateButtonText}');
+              },
             ),
           ),
           const Divider(),
@@ -138,67 +146,20 @@ class DetailsContent extends StatelessWidget {
               IconButton(
                 text: locale.calendarButtonText,
                 iconPath: icCalendar,
+                onPressed: () {
+                  // ignore: avoid_print
+                  print('Press ${locale.calendarButtonText}');
+                },
               ),
               IconButton(
                 text: locale.favoriteButtonText,
                 iconPath: icHeart,
+                onPressed: () {
+                  // ignore: avoid_print
+                  print('Press ${locale.favoriteButtonText}');
+                },
               ),
             ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class IconColoredButton extends StatelessWidget {
-  final String text;
-  final String iconPath;
-
-  const IconColoredButton({
-    Key? key,
-    required this.text,
-    required this.iconPath,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(10),
-      child: Stack(
-        children: [
-          Positioned.fill(
-            child: Container(
-              decoration: BoxDecoration(
-                color: theme.accentColor,
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 48,
-            child: TextButton(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  IconSvg(
-                    icon: iconPath,
-                  ),
-                  const SizedBox(
-                    width: 8,
-                  ),
-                  Text(
-                    text,
-                    style: theme.textTheme.button,
-                  ),
-                ],
-              ),
-              onPressed: () {
-                // ignore: avoid_print
-                print('Press ${text}');
-              },
-            ),
           ),
         ],
       ),
@@ -209,11 +170,13 @@ class IconColoredButton extends StatelessWidget {
 class IconButton extends StatelessWidget {
   final String text;
   final String iconPath;
+  final VoidCallback? onPressed;
 
   const IconButton({
     Key? key,
     required this.text,
     required this.iconPath,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
@@ -222,7 +185,7 @@ class IconButton extends StatelessWidget {
 
     return Expanded(
       child: TextButton(
-        onPressed: () {},
+        onPressed: onPressed,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
