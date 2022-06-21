@@ -112,7 +112,7 @@ class DetailsContent extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 24),
-            child: IconFlatButton(
+            child: IconColoredButton(
               text: locale.locateButtonText,
               iconPath: icGo,
             ),
@@ -126,11 +126,11 @@ class DetailsContent extends StatelessWidget {
             children: [
               IconButton(
                 text: locale.calendarButtonText,
-                icon: Icons.calendar_today_rounded,
+                iconPath: icCalendar,
               ),
               IconButton(
                 text: locale.favoriteButtonText,
-                icon: Icons.favorite_border_rounded,
+                iconPath: icHeart,
               ),
             ],
           ),
@@ -140,11 +140,11 @@ class DetailsContent extends StatelessWidget {
   }
 }
 
-class IconFlatButton extends StatelessWidget {
+class IconColoredButton extends StatelessWidget {
   final String text;
   final String iconPath;
 
-  const IconFlatButton({
+  const IconColoredButton({
     Key? key,
     required this.text,
     required this.iconPath,
@@ -154,46 +154,42 @@ class IconFlatButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return SizedBox(
-      width: double.infinity,
-      height: 48,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(10),
-        child: Stack(
-          children: [
-            Positioned.fill(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: theme.accentColor,
-                ),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(10),
+      child: Stack(
+        children: [
+          Positioned.fill(
+            child: Container(
+              decoration: BoxDecoration(
+                color: theme.accentColor,
               ),
             ),
-            SizedBox(
-              height: 48,
-              child: TextButton(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconSvg(
-                      icon: iconPath,
-                    ),
-                    const SizedBox(
-                      width: 8,
-                    ),
-                    Text(
-                      text,
-                      style: theme.textTheme.button,
-                    ),
-                  ],
-                ),
-                onPressed: () {
-                  // ignore: avoid_print
-                  print('Press ${text}');
-                },
+          ),
+          SizedBox(
+            height: 48,
+            child: TextButton(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconSvg(
+                    icon: iconPath,
+                  ),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  Text(
+                    text,
+                    style: theme.textTheme.button,
+                  ),
+                ],
               ),
+              onPressed: () {
+                // ignore: avoid_print
+                print('Press ${text}');
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -201,12 +197,12 @@ class IconFlatButton extends StatelessWidget {
 
 class IconButton extends StatelessWidget {
   final String text;
-  final IconData icon;
+  final String iconPath;
 
   const IconButton({
     Key? key,
     required this.text,
-    required this.icon,
+    required this.iconPath,
   }) : super(key: key);
 
   @override
@@ -214,21 +210,24 @@ class IconButton extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Expanded(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            icon, //кнопка слева станет неактивной позже, сейчас перекрашивать отдельную кнопку смысла нет
-            color: theme.colorScheme.onPrimary,
-          ),
-          const SizedBox(
-            width: 8,
-          ),
-          Text(
-            text,
-            style: theme.textTheme.bodyText1,
-          ),
-        ],
+      child: TextButton(
+        onPressed: () {},
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            IconSvg(
+              icon: iconPath,
+              color: theme.colorScheme.background,
+            ),
+            const SizedBox(
+              width: 8,
+            ),
+            Text(
+              text,
+              style: theme.textTheme.bodyText1,
+            ),
+          ],
+        ),
       ),
     );
   }
