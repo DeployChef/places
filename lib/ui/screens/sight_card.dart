@@ -5,7 +5,7 @@ import 'package:places/domain/sight.dart';
 import 'package:places/styles/color_constants.dart';
 import 'package:places/styles/styles.dart';
 import 'package:places/ui/components/icon_action_button.dart';
-import 'package:places/ui/components/icons_svg.dart';
+import 'package:places/ui/components/icon_svg.dart';
 import 'package:places/ui/screens/res/assets.dart';
 
 class SightCard extends StatelessWidget {

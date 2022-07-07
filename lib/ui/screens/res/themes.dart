@@ -20,7 +20,7 @@ class AppTheme {
         secondary: AppColors.lightSecondaryColor,
         secondaryVariant: AppColors.lightSecondaryVariant,
         onPrimary: AppColors.lightSecondaryColor,
-        primary: AppColors.lightButtonColorSplash,
+        primary: AppColors.colorWhite,
       ),
       textTheme: TextTheme(
         headline6: AppTypography.textSubtitle18.copyWith(color: AppColors.lightPrimaryColorDark),

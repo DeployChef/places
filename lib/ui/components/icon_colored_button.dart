@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:places/ui/components/icons_svg.dart';
+import 'package:places/ui/components/icon_svg.dart';
 
 class IconColoredButton extends StatelessWidget {
   final String text;
