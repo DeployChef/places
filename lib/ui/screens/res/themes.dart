@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:places/styles/color_constants.dart';
 import 'package:places/styles/styles.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AppTheme {
   // ignore: long-method
@@ -19,8 +20,12 @@ class AppTheme {
         background: AppColors.lightBackgroundColor,
         secondary: AppColors.lightSecondaryColor,
         secondaryVariant: AppColors.lightSecondaryVariant,
-        onPrimary: AppColors.lightSecondaryColor,
-        primary: AppColors.colorWhite,
+        onPrimary: AppColors.lightPrimaryColorDark,
+        primary: AppColors.lightPrimaryColorDark,
+      ),
+      appBarTheme: base.appBarTheme.copyWith(
+        color: AppColors.lightPrimaryColor,
+        elevation: 0,
       ),
       textTheme: TextTheme(
         headline6: AppTypography.textSubtitle18.copyWith(color: AppColors.lightPrimaryColorDark),
@@ -61,7 +66,7 @@ class AppTheme {
         unselectedLabelStyle: AppTypography.textSmall14Bold,
       ),
       iconTheme: base.iconTheme.copyWith(
-        color: AppColors.lightIconColor,
+        color: AppColors.colorBlackDark,
         size: 24,
       ),
     );
