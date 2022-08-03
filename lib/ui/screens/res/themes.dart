@@ -69,6 +69,17 @@ class AppTheme {
         color: AppColors.colorBlackDark,
         size: 24,
       ),
+      sliderTheme: base.sliderTheme.copyWith(
+        trackHeight: 2,
+        thumbColor: AppColors.lightPrimaryColor,
+        activeTrackColor: AppColors.lightAccentColor,
+        overlayShape: SliderComponentShape.noOverlay,
+      ),
+      floatingActionButtonTheme: base.floatingActionButtonTheme.copyWith(
+        backgroundColor: AppColors.lightAccentColor,
+        elevation: 0,
+        highlightElevation: 0,
+      ),
     );
   }
 
