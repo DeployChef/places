@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:places/mocks.dart';
 import 'package:places/ui/components/icon_svg.dart';
 import 'package:places/ui/screens/res/assets.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Category {
   String name;
@@ -29,14 +30,7 @@ class FiltersScreen extends StatefulWidget {
 }
 
 class _FiltersScreenState extends State<FiltersScreen> {
-  List<Category> _categories = [
-    Category(name: "Отель", iconPath: icHotel),
-    Category(name: "Ресторан", iconPath: icRestaurant),
-    Category(name: "Особое место", iconPath: icParticular),
-    Category(name: "Парк", iconPath: icPark),
-    Category(name: "Музей", iconPath: icMuseum),
-    Category(name: "Кафе", iconPath: icCafe),
-  ];
+  late List<Category> _categories;
 
   RangeValues _currentRangeValues = RangeValues(100, 3000);
   int _sightCount = 0;
@@ -52,16 +46,26 @@ class _FiltersScreenState extends State<FiltersScreen> {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
+    final locale = AppLocalizations.of(context)!;
+
+    _categories = [
+      Category(name: locale.hotel, iconPath: icHotel),
+      Category(name: locale.restaurant, iconPath: icRestaurant),
+      Category(name: locale.specialPlace, iconPath: icParticular),
+      Category(name: locale.park, iconPath: icPark),
+      Category(name: locale.museum, iconPath: icMuseum),
+      Category(name: locale.cafe, iconPath: icCafe),
+    ];
 
     return Scaffold(
-      appBar: _createSettingsAppbar(theme),
+      appBar: _createSettingsAppbar(theme, locale),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
         child: Column(
           children: [
-            _buildCategories(theme),
+            _buildCategories(theme, locale),
             SizedBox(height: 56),
-            _buildRange(),
+            _buildRange(locale),
           ],
         ),
       ),
@@ -75,21 +79,21 @@ class _FiltersScreenState extends State<FiltersScreen> {
             ),
           ),
           onPressed: () {},
-          label: Text("ПОКАЗАТЬ ($_sightCount)"),
+          label: Text("${locale.show.toUpperCase()} ($_sightCount)"),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 
-  Column _buildRange() {
+  Column _buildRange(AppLocalizations locale) {
     return Column(
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("Расстояние"),
-            Text("от 10 до 30 км"),
+            Text(locale.distance),
+            Text(locale.rangeTitle),
           ],
         ),
         SizedBox(
@@ -113,11 +117,11 @@ class _FiltersScreenState extends State<FiltersScreen> {
     );
   }
 
-  Column _buildCategories(ThemeData theme) {
+  Column _buildCategories(ThemeData theme, AppLocalizations locale) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("КАТЕГОРИИ"),
+        Text(locale.categories),
         SizedBox(
           height: 24,
         ),
@@ -237,7 +241,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
     });
   }
 
-  AppBar _createSettingsAppbar(ThemeData theme) {
+  AppBar _createSettingsAppbar(ThemeData theme, AppLocalizations locale) {
     return AppBar(
       leading: Container(
           padding: const EdgeInsets.only(left: 16, right: 16),
@@ -249,7 +253,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
         alignment: Alignment.centerRight,
         child: TextButton(
           child: Text(
-            "Очистить",
+            locale.clear,
             style: theme.textTheme.headline5?.copyWith(
               color: theme.accentColor,
             ),

@@ -11,5 +11,19 @@
     "notVisitedTab": "Want to visit",
     "blankHeader": "Empty",
     "blankTextVisited": "Complete the route\nto get the place here.",
-    "blankTextNotVisited": "Mark your favorite \nplaces and they will appear here."
+    "blankTextNotVisited": "Mark your favorite \nplaces and they will appear here.",
+    "settings": "Settings",
+    "categories": "CATEGORIES",
+    "clear": "Clear",
+    "distance": "Distance",
+    "rangeTitle": "from 10 to 30 km",
+    "show": "Show",
+    "hotel": "Hotel",
+    "restaurant": "Restaurant",
+    "specialPlace": "special place",
+    "park": "Park",
+    "museum": "Museum",
+    "cafe": "Cafe",
+    "darkTheme": "Dark Theme",
+    "watchHelp": "Watch tutorial"
 }

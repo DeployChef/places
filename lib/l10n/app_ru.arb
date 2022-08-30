@@ -11,5 +11,19 @@
     "notVisitedTab": "Хочу посетить",
     "blankHeader": "Пусто",
     "blankTextVisited": "Завершите маршрут,\nчтобы место попало сюда.",
-    "blankTextNotVisited": "Отмечайте понравившиеся\nместа и они появятся здесь."
+    "blankTextNotVisited": "Отмечайте понравившиеся\nместа и они появятся здесь.",
+    "settings": "Настройки",
+    "categories": "КАТЕГОРИИ",
+    "clear": "Очистить",
+    "distance": "Расстояние",
+    "rangeTitle": "от 10 до 30 км",
+    "show": "Показать",
+    "hotel": "Отель",
+    "restaurant": "Ресторан",
+    "specialPlace": "Особое место",
+    "park": "Парк",
+    "museum": "Музей",
+    "cafe": "Кафе",
+    "darkTheme": "Темная тема",
+    "watchHelp": "Смотреть туториал"
 }
