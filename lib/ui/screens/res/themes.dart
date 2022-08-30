@@ -37,6 +37,7 @@ class AppTheme {
         bodyText1: AppTypography.textSmall14.copyWith(color: AppColors.lightSecondaryColor),
         bodyText2: AppTypography.textSmall14.copyWith(color: AppColors.lightSecondaryVariant),
         button: AppTypography.textButton.copyWith(color: AppColors.lightPrimaryColor),
+        caption: AppTypography.textSuperSmall12.copyWith(color: AppColors.lightSecondaryColor),
       ),
       primaryTextTheme: TextTheme(
         headline6: AppTypography.textSubtitle18.copyWith(color: AppColors.lightBackgroundColor),
@@ -114,6 +115,7 @@ class AppTheme {
         bodyText1: AppTypography.textSmall14.copyWith(color: AppColors.colorWhite),
         bodyText2: AppTypography.textSmall14.copyWith(color: AppColors.darkBackgroundColor),
         button: AppTypography.textButton,
+        caption: AppTypography.textSuperSmall12.copyWith(color: AppColors.colorWhite),
       ),
       primaryTextTheme: TextTheme(
         headline6: AppTypography.textSubtitle18.copyWith(color: AppColors.darkBackgroundColor),

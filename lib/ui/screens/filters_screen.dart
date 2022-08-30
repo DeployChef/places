@@ -30,7 +30,15 @@ class FiltersScreen extends StatefulWidget {
 }
 
 class _FiltersScreenState extends State<FiltersScreen> {
-  late List<Category> _categories;
+  late AppLocalizations _locale;
+  late List<Category> _categories = [
+    Category(name: _locale.hotel, iconPath: icHotel),
+    Category(name: _locale.restaurant, iconPath: icRestaurant),
+    Category(name: _locale.specialPlace, iconPath: icParticular),
+    Category(name: _locale.park, iconPath: icPark),
+    Category(name: _locale.museum, iconPath: icMuseum),
+    Category(name: _locale.cafe, iconPath: icCafe),
+  ];
 
   RangeValues _currentRangeValues = RangeValues(100, 3000);
   int _sightCount = 0;
@@ -46,26 +54,17 @@ class _FiltersScreenState extends State<FiltersScreen> {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    final locale = AppLocalizations.of(context)!;
-
-    _categories = [
-      Category(name: locale.hotel, iconPath: icHotel),
-      Category(name: locale.restaurant, iconPath: icRestaurant),
-      Category(name: locale.specialPlace, iconPath: icParticular),
-      Category(name: locale.park, iconPath: icPark),
-      Category(name: locale.museum, iconPath: icMuseum),
-      Category(name: locale.cafe, iconPath: icCafe),
-    ];
+    _locale = AppLocalizations.of(context)!;
 
     return Scaffold(
-      appBar: _createSettingsAppbar(theme, locale),
+      appBar: _createSettingsAppbar(theme),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
         child: Column(
           children: [
-            _buildCategories(theme, locale),
+            _buildCategories(theme),
             SizedBox(height: 56),
-            _buildRange(locale),
+            _buildRange(theme),
           ],
         ),
       ),
@@ -79,21 +78,27 @@ class _FiltersScreenState extends State<FiltersScreen> {
             ),
           ),
           onPressed: () {},
-          label: Text("${locale.show.toUpperCase()} ($_sightCount)"),
+          label: Text("${_locale.show.toUpperCase()} ($_sightCount)"),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 
-  Column _buildRange(AppLocalizations locale) {
+  Column _buildRange(ThemeData theme) {
     return Column(
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(locale.distance),
-            Text(locale.rangeTitle),
+            Text(
+              _locale.distance,
+              style: theme.primaryTextTheme.subtitle1,
+            ),
+            Text(
+              _locale.rangeTitle,
+              style: theme.primaryTextTheme.subtitle1,
+            ),
           ],
         ),
         SizedBox(
@@ -117,11 +122,13 @@ class _FiltersScreenState extends State<FiltersScreen> {
     );
   }
 
-  Column _buildCategories(ThemeData theme, AppLocalizations locale) {
+  Column _buildCategories(ThemeData theme) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(locale.categories),
+        Text(
+          _locale.categories,
+        ),
         SizedBox(
           height: 24,
         ),
@@ -178,20 +185,23 @@ class _FiltersScreenState extends State<FiltersScreen> {
                     splashColor: theme.accentColor.withOpacity(0.5),
                   ),
                 ),
-                if (category.isSelected) _showSelected(),
+                if (category.isSelected) _showSelected(theme),
               ],
             ),
           ),
           SizedBox(
             height: 12,
           ),
-          Text(category.name),
+          Text(
+            category.name,
+            style: theme.textTheme.caption,
+          ),
         ],
       ),
     );
   }
 
-  Widget _showSelected() {
+  Widget _showSelected(ThemeData theme) {
     return Align(
       alignment: Alignment.bottomRight,
       child: Stack(
@@ -201,7 +211,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
             height: 16,
             decoration: ShapeDecoration(
               shape: CircleBorder(),
-              color: Theme.of(context).colorScheme.primary,
+              color: theme.colorScheme.primary,
             ),
           ),
           Positioned(
@@ -211,7 +221,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
             bottom: 0,
             child: SvgPicture.asset(
               icTick,
-              color: Theme.of(context).primaryColor,
+              color: theme.primaryColor,
             ),
           ),
         ],
@@ -241,7 +251,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
     });
   }
 
-  AppBar _createSettingsAppbar(ThemeData theme, AppLocalizations locale) {
+  AppBar _createSettingsAppbar(ThemeData theme) {
     return AppBar(
       leading: Container(
           padding: const EdgeInsets.only(left: 16, right: 16),
@@ -253,7 +263,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
         alignment: Alignment.centerRight,
         child: TextButton(
           child: Text(
-            locale.clear,
+            _locale.clear,
             style: theme.textTheme.headline5?.copyWith(
               color: theme.accentColor,
             ),
