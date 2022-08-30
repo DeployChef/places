@@ -18,47 +18,42 @@ class SightCard extends StatelessWidget {
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(_radiusCard),
-      child: Material(
-        borderRadius: BorderRadius.circular(_radiusCard),
-        clipBehavior: Clip.antiAlias,
-        color: Theme.of(context).primaryColorLight,
-        child: Container(
-          color: theme.primaryColorLight,
-          child: Stack(
-            children: [
-              Column(
-                children: [
-                  CardTop(
-                    model: model,
-                    theme: theme,
-                  ),
-                  CardBottom(
-                    model: model,
-                    cardType: cardType,
-                  ),
-                ],
-              ),
-              Positioned.fill(
-                child: Material(
-                  type: MaterialType.transparency,
-                  child: InkWell(
-                    onTap: () {
-                      // ignore: avoid_print
-                      print("card tap");
-                    },
-                  ),
+      child: Container(
+        color: theme.primaryColorLight,
+        child: Stack(
+          children: [
+            Column(
+              children: [
+                CardTop(
+                  model: model,
+                  theme: theme,
                 ),
-              ),
-              Positioned(
-                top: 8,
-                right: 16,
-                child: CardActions(
+                CardBottom(
+                  model: model,
                   cardType: cardType,
-                  visited: model.visited,
+                ),
+              ],
+            ),
+            Positioned.fill(
+              child: Material(
+                type: MaterialType.transparency,
+                child: InkWell(
+                  onTap: () {
+                    // ignore: avoid_print
+                    print("card tap");
+                  },
                 ),
               ),
-            ],
-          ),
+            ),
+            Positioned(
+              top: 8,
+              right: 16,
+              child: CardActions(
+                cardType: cardType,
+                visited: model.visited,
+              ),
+            ),
+          ],
         ),
       ),
     );
