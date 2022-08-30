@@ -2,35 +2,63 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:places/domain/enums/card_type.dart';
 import 'package:places/domain/sight.dart';
-import 'package:places/styles/color_constants.dart';
-import 'package:places/styles/styles.dart';
 import 'package:places/ui/components/icon_action_button.dart';
-import 'package:places/ui/components/icon_svg.dart';
 import 'package:places/ui/screens/res/assets.dart';
 
 class SightCard extends StatelessWidget {
   final Sight model;
   final CardType cardType;
+  double get _radiusCard => 10;
 
   const SightCard({Key? key, required this.model, required this.cardType}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
+
     return ClipRRect(
-      borderRadius: BorderRadius.circular(10),
-      child: Container(
+      borderRadius: BorderRadius.circular(_radiusCard),
+      child: Material(
+        borderRadius: BorderRadius.circular(_radiusCard),
+        clipBehavior: Clip.antiAlias,
         color: Theme.of(context).primaryColorLight,
-        child: Column(
-          children: [
-            CardTop(
-              model: model,
-              cardType: cardType,
-            ),
-            CardBottom(
-              model: model,
-              cardType: cardType,
-            ),
-          ],
+        child: Container(
+          color: theme.primaryColorLight,
+          child: Stack(
+            children: [
+              Column(
+                children: [
+                  CardTop(
+                    model: model,
+                    theme: theme,
+                  ),
+                  CardBottom(
+                    model: model,
+                    cardType: cardType,
+                  ),
+                ],
+              ),
+              Positioned.fill(
+                child: Material(
+                  type: MaterialType.transparency,
+                  child: InkWell(
+                    onTap: () {
+                      // ignore: avoid_print
+                      print("card tap");
+                    },
+                  ),
+                ),
+              ),
+              Positioned(
+                top: 8,
+                right: 16,
+                child: CardActions(
+                  cardType: cardType,
+                  visited: model.visited,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -39,13 +67,9 @@ class SightCard extends StatelessWidget {
 
 class CardTop extends StatelessWidget {
   final Sight model;
-  final CardType cardType;
+  final ThemeData theme;
 
-  const CardTop({
-    Key? key,
-    required this.model,
-    required this.cardType,
-  }) : super(key: key);
+  const CardTop({Key? key, required this.model, required this.theme}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -60,16 +84,8 @@ class CardTop extends StatelessWidget {
             padding: const EdgeInsets.only(left: 16, top: 16),
             child: Text(
               model.type,
-              style: Theme.of(context).textTheme.subtitle2,
+              style: theme.textTheme.subtitle2,
             ),
-          ),
-        ),
-        Positioned(
-          top: 8,
-          right: 16,
-          child: CardActions(
-            cardType: cardType,
-            visited: model.visited,
           ),
         ),
       ],
