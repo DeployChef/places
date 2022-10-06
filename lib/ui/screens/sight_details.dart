@@ -3,6 +3,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/styles/color_constants.dart';
 import 'package:places/styles/styles.dart';
+import 'package:places/ui/components/icon_colored_button.dart';
+import 'package:places/ui/components/icon_svg.dart';
+import 'package:places/ui/screens/res/assets.dart';
 
 class SightDetails extends StatelessWidget {
   final Sight model;
@@ -44,18 +47,32 @@ class BackButton extends StatelessWidget {
       alignment: Alignment.topLeft,
       child: Padding(
         padding: const EdgeInsets.only(top: 36, left: 16),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: Container(
-            height: 32,
-            width: 32,
-            color: Theme.of(context).scaffoldBackgroundColor,
-            child: Center(
-              child: Icon(
-                Icons.arrow_back_ios_new_rounded,
-                size: 15,
-                color: Theme.of(context).colorScheme.onPrimary,
-              ),
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            maxHeight: 32,
+            maxWidth: 32,
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Stack(
+              children: [
+                Positioned.fill(
+                  child: Container(
+                    color: Theme.of(context).scaffoldBackgroundColor,
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    // ignore: avoid_print
+                    print('Press back');
+                  },
+                  child: Icon(
+                    Icons.arrow_back_ios_new_rounded,
+                    size: 15,
+                    color: Theme.of(context).colorScheme.onPrimary,
+                  ),
+                )
+              ],
             ),
           ),
         ),
@@ -110,28 +127,13 @@ class DetailsContent extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 24),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Container(
-                height: 48,
-                width: double.infinity,
-                color: Theme.of(context).accentColor,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(
-                      Icons.location_pin,
-                    ),
-                    const SizedBox(
-                      width: 8,
-                    ),
-                    Text(
-                      locale.locateButtonText.toUpperCase(),
-                      style: theme.textTheme.button,
-                    ),
-                  ],
-                ),
-              ),
+            child: IconColoredButton(
+              text: locale.locateButtonText,
+              iconPath: icGo,
+              onPressed: () {
+                // ignore: avoid_print
+                print('Press ${locale.locateButtonText}');
+              },
             ),
           ),
           const Divider(),
@@ -143,11 +145,19 @@ class DetailsContent extends StatelessWidget {
             children: [
               IconButton(
                 text: locale.calendarButtonText,
-                icon: Icons.calendar_today_rounded,
+                iconPath: icCalendar,
+                onPressed: () {
+                  // ignore: avoid_print
+                  print('Press ${locale.calendarButtonText}');
+                },
               ),
               IconButton(
                 text: locale.favoriteButtonText,
-                icon: Icons.favorite_border_rounded,
+                iconPath: icHeart,
+                onPressed: () {
+                  // ignore: avoid_print
+                  print('Press ${locale.favoriteButtonText}');
+                },
               ),
             ],
           ),
@@ -159,12 +169,14 @@ class DetailsContent extends StatelessWidget {
 
 class IconButton extends StatelessWidget {
   final String text;
-  final IconData icon;
+  final String iconPath;
+  final VoidCallback? onPressed;
 
   const IconButton({
     Key? key,
     required this.text,
-    required this.icon,
+    required this.iconPath,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
@@ -172,21 +184,24 @@ class IconButton extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Expanded(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            icon, //кнопка слева станет неактивной позже, сейчас перекрашивать отдельную кнопку смысла нет
-            color: theme.colorScheme.onPrimary,
-          ),
-          const SizedBox(
-            width: 8,
-          ),
-          Text(
-            text,
-            style: theme.textTheme.bodyText1,
-          ),
-        ],
+      child: TextButton(
+        onPressed: onPressed,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            IconSvg(
+              icon: iconPath,
+              color: theme.colorScheme.background,
+            ),
+            const SizedBox(
+              width: 8,
+            ),
+            Text(
+              text,
+              style: theme.textTheme.bodyText1,
+            ),
+          ],
+        ),
       ),
     );
   }

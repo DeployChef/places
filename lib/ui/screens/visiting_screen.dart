@@ -19,7 +19,7 @@ class VisitingScreen extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
+          backgroundColor: Color.fromARGB(0, 221, 154, 154),
           elevation: 0,
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(60),

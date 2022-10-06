@@ -8,11 +8,13 @@ class AppColors {
   static const colorInactiveBlack = Color.fromRGBO(124, 126, 146, 0.56);
 
   static const colorWhiteGreen = Color(0xff4CAF50);
+  static const colorWhiteGreenSplash = Color.fromARGB(255, 101, 202, 104);
   static const colorWhiteYellow = Color(0xffFCDD3D);
   static const colorWhiteError = Color(0xffEF4343);
   static const colorWhiteMain = Color(0xff252849);
 
   static const colorBlackGreen = Color(0xff6ADA6F);
+  static const colorBlackGreenSplash = Color.fromARGB(255, 43, 121, 46);
   static const colorBlackYellow = Color(0xffFFE769);
   static const colorBlackError = Color(0xffCF2A2A);
   static const colorBlackDark = Color(0xff1A1A20);
@@ -30,7 +32,8 @@ class AppColors {
       lightSecondaryVariant = colorSecondary2,
       lightDividerColor = colorInactiveBlack,
       lightIconColor = colorWhite,
-      lightButtonColor = colorWhiteGreen;
+      lightButtonColor = colorWhiteGreen,
+      lightButtonColorSplash = colorWhiteGreenSplash;
 
   ///Тёмная тема
   static const Color darkPrimaryColor = colorBlackMain,
@@ -44,5 +47,6 @@ class AppColors {
       darkSecondaryVariant = colorSecondary2,
       darkDividerColor = colorInactiveBlack,
       darkIconColor = colorWhite,
-      darkButtonColor = colorBlackGreen;
+      darkButtonColor = colorBlackGreen,
+      darkButtonColorSplash = colorBlackGreenSplash;
 }
