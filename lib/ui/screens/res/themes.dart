@@ -15,6 +15,7 @@ class AppTheme {
       primaryColorDark: AppColors.lightPrimaryColorLight,
       accentColor: AppColors.lightAccentColor,
       backgroundColor: AppColors.lightScaffoldBackgroundColor,
+      disabledColor: AppColors.lightPrimaryColorLight,
       scaffoldBackgroundColor: AppColors.lightScaffoldBackgroundColor,
       colorScheme: base.colorScheme.copyWith(
         background: AppColors.lightBackgroundColor,
@@ -81,6 +82,42 @@ class AppTheme {
         elevation: 0,
         highlightElevation: 0,
       ),
+      inputDecorationTheme: base.inputDecorationTheme.copyWith(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        errorStyle: TextStyle(fontSize: 0),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(
+            color: AppColors.lightAccentColor.withOpacity(0.4),
+            style: BorderStyle.solid,
+            width: 2,
+          ),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(
+            color: AppColors.colorInactiveBlack,
+            style: BorderStyle.solid,
+            width: 1,
+          ),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(
+            color: AppColors.lightErrorColor.withOpacity(0.40),
+            style: BorderStyle.solid,
+            width: 1,
+          ),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(
+            color: AppColors.lightErrorColor.withOpacity(0.40),
+            style: BorderStyle.solid,
+            width: 2,
+          ),
+        ),
+      ),
     );
   }
 
@@ -94,6 +131,7 @@ class AppTheme {
       scaffoldBackgroundColor: AppColors.colorBlackMain,
       primaryColorDark: AppColors.darkPrimaryColorDark,
       backgroundColor: AppColors.darkScaffoldBackgroundColor,
+      disabledColor: AppColors.darkPrimaryColorLight,
       accentColor: AppColors.darkAccentColor,
       colorScheme: base.colorScheme.copyWith(
         background: AppColors.darkBackgroundColor,
@@ -102,6 +140,7 @@ class AppTheme {
         primary: AppColors.darkButtonColorSplash,
       ),
       buttonTheme: base.buttonTheme.copyWith(
+        disabledColor: AppColors.lightPrimaryColorLight,
         buttonColor: AppColors.colorBlackGreen,
         textTheme: ButtonTextTheme.primary,
       ),
@@ -144,6 +183,52 @@ class AppTheme {
         color: AppColors.darkIconColor,
         size: 24,
       ),
+      inputDecorationTheme: base.inputDecorationTheme.copyWith(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        errorStyle: TextStyle(fontSize: 0),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(
+            color: AppColors.darkAccentColor.withOpacity(0.4),
+            style: BorderStyle.solid,
+            width: 2,
+          ),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(
+            color: AppColors.colorInactiveBlack,
+            style: BorderStyle.solid,
+            width: 1,
+          ),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(
+            color: AppColors.darkErrorColor.withOpacity(0.40),
+            style: BorderStyle.solid,
+            width: 1,
+          ),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(
+            color: AppColors.darkErrorColor.withOpacity(0.40),
+            style: BorderStyle.solid,
+            width: 2,
+          ),
+        ),
+      ),
     );
   }
+}
+
+/// постоянный цвет в обоих темах
+extension CustomColorScheme on ColorScheme {
+  Color get white => AppColors.colorWhite;
+  Color get secondary => AppColors.colorSecondary;
+  Color get secondary2 => AppColors.colorSecondary2;
+  Color get inactiveBlack => AppColors.colorInactiveBlack;
+  Color get green => brightness == Brightness.light ? AppColors.colorWhiteGreen : AppColors.colorBlackGreen;
+  Color get yellow => brightness == Brightness.light ? AppColors.colorWhiteYellow : AppColors.colorBlackYellow;
 }

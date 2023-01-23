@@ -204,27 +204,23 @@ class _FiltersScreenState extends State<FiltersScreen> {
   Widget _showSelected(ThemeData theme) {
     return Align(
       alignment: Alignment.bottomRight,
-      child: Stack(
-        children: [
-          Container(
-            width: 16,
-            height: 16,
-            decoration: ShapeDecoration(
-              shape: CircleBorder(),
-              color: theme.colorScheme.primary,
-            ),
+      child: Container(
+        width: 16,
+        height: 16,
+        decoration: ShapeDecoration(
+          shape: CircleBorder(),
+          color: theme.colorScheme.primary,
+        ),
+        child: Positioned(
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          child: SvgPicture.asset(
+            icTick,
+            color: theme.primaryColor,
           ),
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: SvgPicture.asset(
-              icTick,
-              color: theme.primaryColor,
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }

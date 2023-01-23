@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:places/mocks.dart';
+import 'package:places/ui/screens/add_sight_screen.dart';
 import 'package:places/ui/screens/filters_screen.dart';
 import 'package:places/ui/screens/res/themes.dart';
 import 'package:places/ui/screens/settings_screen.dart';
@@ -39,9 +40,10 @@ class App extends StatelessWidget {
           theme: _darkTheme.value ? AppTheme.darkTheme : AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           //home: SettingsScreen(),
-          home: FiltersScreen(),
+          //home: FiltersScreen(),
           //home: SightListScreen(),
-          // home: SightDetails(model: mocks[0]),
+          //home: SightDetails(model: mocks[0]),
+          home: AddSightScreen(),
         ),
       ),
     );

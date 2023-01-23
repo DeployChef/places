@@ -54,25 +54,19 @@ class BackButton extends StatelessWidget {
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
-            child: Stack(
-              children: [
-                Positioned.fill(
-                  child: Container(
-                    color: Theme.of(context).scaffoldBackgroundColor,
-                  ),
+            child: ColoredBox(
+              color: Theme.of(context).scaffoldBackgroundColor,
+              child: TextButton(
+                onPressed: () {
+                  // ignore: avoid_print
+                  print('Press back');
+                },
+                child: Icon(
+                  Icons.arrow_back_ios_new_rounded,
+                  size: 15,
+                  color: Theme.of(context).colorScheme.onPrimary,
                 ),
-                TextButton(
-                  onPressed: () {
-                    // ignore: avoid_print
-                    print('Press back');
-                  },
-                  child: Icon(
-                    Icons.arrow_back_ios_new_rounded,
-                    size: 15,
-                    color: Theme.of(context).colorScheme.onPrimary,
-                  ),
-                )
-              ],
+              ),
             ),
           ),
         ),

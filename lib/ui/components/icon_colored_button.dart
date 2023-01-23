@@ -19,37 +19,27 @@ class IconColoredButton extends StatelessWidget {
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
-      child: Stack(
-        children: [
-          Positioned.fill(
-            child: Container(
-              decoration: BoxDecoration(
-                color: theme.accentColor,
+      child: Container(
+        color: theme.accentColor,
+        height: 48,
+        child: TextButton(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconSvg(
+                icon: iconPath,
               ),
-            ),
-          ),
-          SizedBox(
-            height: 48,
-            child: TextButton(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  IconSvg(
-                    icon: iconPath,
-                  ),
-                  const SizedBox(
-                    width: 8,
-                  ),
-                  Text(
-                    text,
-                    style: theme.textTheme.button,
-                  ),
-                ],
+              const SizedBox(
+                width: 8,
               ),
-              onPressed: onPressed,
-            ),
+              Text(
+                text,
+                style: theme.textTheme.button,
+              ),
+            ],
           ),
-        ],
+          onPressed: onPressed,
+        ),
       ),
     );
   }
