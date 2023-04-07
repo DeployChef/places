@@ -87,64 +87,17 @@ class _AddSightScreenState extends State<AddSightScreen> {
                   children: [
                     Text("КАТЕГОРИЯ"),
                     SizedBox(
-                      height: 50,
+                      height: 24,
                     ),
-                    Text("Название".toUpperCase()),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    SizedBox(
-                      height: heightInput,
-                      child: TextFormField(
-                        focusNode: _nameFocus,
-                        autofocus: true,
-                        controller: _nameController,
-                        onTap: () {
-                          setState(() {
-                            _currentFocus = _nameFocus;
-                          });
-                        },
-                        cursorHeight: 24,
-                        cursorWidth: 1,
-                        maxLength: 100,
-                        maxLines: 1,
-                        textInputAction: TextInputAction.next,
-                        style: theme.primaryTextTheme.subtitle1,
-                        decoration: InputDecoration(
-                          counterText: '',
-                          suffixIcon: _clearField(context, _nameFocus, _nameController),
-                          enabledBorder: _buildBorderColor(_nameController),
-                        ),
-                      ),
-                    ),
+                    ..._buildName(theme),
                     SizedBox(
                       height: 24,
                     ),
                     _createCoordinatePicker(theme),
                     SizedBox(
-                      height: 50,
-                    ),
-                    Text("Описание".toUpperCase()),
-                    SizedBox(
                       height: 12,
                     ),
-                    SizedBox(
-                      height: 50,
-                      child: TextFormField(
-                        controller: _detailsController,
-                        cursorHeight: 24,
-                        cursorWidth: 1,
-                        maxLength: 300,
-                        maxLines: 3,
-                        decoration: InputDecoration(
-                          counterText: '',
-                          hintText: 'введите текст',
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 50,
-                    ),
+                    ..._buildDescription(theme),
                   ],
                 ),
               ),
@@ -173,6 +126,71 @@ class _AddSightScreenState extends State<AddSightScreen> {
       ),
     );
   }
+
+  List<Widget> _buildDescription(ThemeData theme) => [
+        Text("Описание".toUpperCase()),
+        SizedBox(
+          height: 12,
+        ),
+        TextFormField(
+          focusNode: _detailsFocus,
+          autofocus: true,
+          onEditingComplete: () {
+            _detailsFocus.unfocus();
+            _currentFocus = null;
+          },
+          onTap: () {
+            setState(() {
+              _currentFocus = _detailsFocus;
+            });
+          },
+          controller: _detailsController,
+          cursorHeight: 24,
+          cursorWidth: 1,
+          maxLength: 300,
+          maxLines: 3,
+          textInputAction: TextInputAction.done,
+          style: Theme.of(context).primaryTextTheme.subtitle1,
+          decoration: InputDecoration(
+            counterText: '',
+            hintText: 'введите текст',
+            hintStyle: theme.primaryTextTheme.subtitle1!.copyWith(color: theme.colorScheme.background),
+            suffixIcon: _clearField(context, _detailsFocus, _detailsController),
+            enabledBorder: _buildBorderColor(_detailsController),
+          ),
+        ),
+      ];
+
+  List<Widget> _buildName(ThemeData theme) => [
+        Text("Название".toUpperCase()),
+        SizedBox(
+          height: 12,
+        ),
+        SizedBox(
+          height: heightInput,
+          child: TextFormField(
+            focusNode: _nameFocus,
+            autofocus: true,
+            controller: _nameController,
+            onTap: () {
+              setState(() {
+                _currentFocus = _nameFocus;
+              });
+            },
+            cursorHeight: 24,
+            cursorWidth: 1,
+            maxLength: 100,
+            maxLines: 1,
+            textInputAction: TextInputAction.next,
+            style: theme.primaryTextTheme.subtitle1,
+            decoration: InputDecoration(
+              counterText: '',
+              suffixIcon: _clearField(context, _nameFocus, _nameController),
+              enabledBorder: _buildBorderColor(_nameController),
+            ),
+          ),
+        )
+      ];
 
   AppBar _buildAppBar() {
     return AppBar(
@@ -216,36 +234,86 @@ class _AddSightScreenState extends State<AddSightScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("ШИРОТА"),
-                  Container(
-                    width: 100,
-                    height: 30,
-                    color: Colors.amber,
-                  )
-                ],
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("ШИРОТА"),
+                    SizedBox(
+                      height: 12,
+                    ),
+                    SizedBox(
+                      height: heightInput,
+                      child: TextFormField(
+                        focusNode: _latFocus,
+                        autofocus: true,
+                        controller: _latController,
+                        onTap: () {
+                          setState(() {
+                            _currentFocus = _latFocus;
+                          });
+                        },
+                        cursorHeight: 24,
+                        cursorWidth: 1,
+                        maxLength: 50,
+                        maxLines: 1,
+                        keyboardType: TextInputType.number,
+                        textInputAction: TextInputAction.next,
+                        style: theme.primaryTextTheme.subtitle1,
+                        decoration: InputDecoration(
+                          counterText: '',
+                          suffixIcon: _clearField(context, _latFocus, _latController),
+                          enabledBorder: _buildBorderColor(_latController),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("ДОЛГОТА"),
-                  Container(
-                    width: 100,
-                    height: 30,
-                    color: Colors.amber,
-                  )
-                ],
+              SizedBox(
+                width: 16,
+              ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("ДОЛГОТА"),
+                    SizedBox(
+                      height: 12,
+                    ),
+                    SizedBox(
+                      height: heightInput,
+                      child: TextFormField(
+                        focusNode: _lonFocus,
+                        autofocus: true,
+                        controller: _lonController,
+                        onTap: () {
+                          setState(() {
+                            _currentFocus = _lonFocus;
+                          });
+                        },
+                        cursorHeight: 24,
+                        cursorWidth: 1,
+                        maxLength: 50,
+                        maxLines: 1,
+                        keyboardType: TextInputType.number,
+                        textInputAction: TextInputAction.next,
+                        style: theme.primaryTextTheme.subtitle1,
+                        decoration: InputDecoration(
+                          counterText: '',
+                          suffixIcon: _clearField(context, _lonFocus, _lonController),
+                          enabledBorder: _buildBorderColor(_lonController),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ],
           ),
           TextButton(
-            style: TextButton.styleFrom(
-              padding: EdgeInsets.zero,
-              minimumSize: Size(50, 30),
-              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              alignment: Alignment.centerLeft,
+            style: ButtonStyle(
+              overlayColor: MaterialStateProperty.all(Colors.transparent),
             ),
             child: Text(
               "Указать на карте",
