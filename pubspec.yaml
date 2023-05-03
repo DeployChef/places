@@ -25,7 +25,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   dart_code_metrics: ^4.10.1
-  surf_lint_rules: ^1.4.1
+  # surf_lint_rules: ^1.4.1
 
 
 flutter:

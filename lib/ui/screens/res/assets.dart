@@ -35,5 +35,14 @@ const icRestaurant = '$_baseResPath/catalog/restaurant.svg';
 const icIsChose = '$_baseResPath/tick_choice.svg';
 const icTick = '$_baseResPath/tick.svg';
 
+const icView = '$_baseResPath/view.svg';
+const icPlus = '$_baseResPath/plus.svg';
+const icFilter = '$_baseResPath/filter.svg';
+const icSearch = '$_baseResPath/search.svg';
+const icClear = '$_baseResPath/delete.svg';
+
+/// пустые страницы
+const icEmptySearch = '$_baseResPath/empty_pages/search.svg';
+
 /// настройки
 const icInfo = '$_baseResPath/info.svg';

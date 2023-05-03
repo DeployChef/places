@@ -41,9 +41,9 @@ class App extends StatelessWidget {
           darkTheme: AppTheme.darkTheme,
           //home: SettingsScreen(),
           //home: FiltersScreen(),
-          //home: SightListScreen(),
+          home: SightListScreen(),
           //home: SightDetails(model: mocks[0]),
-          home: AddSightScreen(),
+          //home: AddSightScreen(),
         ),
       ),
     );
