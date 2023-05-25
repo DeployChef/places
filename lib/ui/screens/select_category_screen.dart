@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:places/domain/categories.dart';
 import 'package:places/mocks.dart';
 import 'package:places/ui/components/button_save.dart';
-import 'package:places/ui/components/icon_leading_appbar.dart';
+import 'package:places/ui/components/small_leading_icon.dart';
 import 'package:places/ui/components/icon_svg.dart';
 import 'package:places/ui/screens/res/assets.dart';
 import 'package:places/ui/screens/res/sizes.dart';
@@ -73,7 +73,7 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
       );
 
   /// категории
-  _buildCategories() => SingleChildScrollView(
+  Widget _buildCategories() => SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
           child: Column(

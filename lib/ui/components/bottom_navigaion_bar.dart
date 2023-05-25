@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:places/styles/color_constants.dart';
 
 class MainBottomNavigationBar extends StatelessWidget {
   final int currentScreenIndex;

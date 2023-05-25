@@ -19,10 +19,8 @@ class ButtonClear extends StatelessWidget {
             padding: EdgeInsets.zero,
             shape: const CircleBorder(),
           ),
-          onPressed: () {
-            controller.clear();
-          },
-          child: Icon(
+          onPressed: controller.clear,
+          child: const Icon(
             Icons.close,
             size: 16,
             color: Colors.white,

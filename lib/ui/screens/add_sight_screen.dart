@@ -265,7 +265,7 @@ class _AddSightScreenState extends State<AddSightScreen> {
 
   /// получаем выбранную категорию из экрана с категориями
   void _returnCategoryFromSelectCategoryScreen() async {
-    final result = await Navigator.push(
+    final String? result = await Navigator.push(
       context,
       MaterialPageRoute(
           builder: (context) => SelectCategoryScreen(

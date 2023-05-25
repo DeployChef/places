@@ -13,8 +13,7 @@ class SmallLeadingIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: IconButton(
+    return IconButton(
       icon: SvgPicture.asset(
         icon,
         color: Theme.of(context).colorScheme.onPrimary,
@@ -22,6 +21,6 @@ class SmallLeadingIcon extends StatelessWidget {
         height: 24,
       ),
       onPressed: onPressed,
-    ));
+    );
   }
 }

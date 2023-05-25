@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:places/ui/screens/res/sizes.dart';
 
-/// текстовая кнопка сливающаяся с фоном
-/// на экране добавления нового места - Указать на карте
+/**
+ * текстовая кнопка сливающаяся с фоном
+ * на экране добавления нового места - Указать на карте
+ */
 class ButtonText extends StatelessWidget {
   final String title;
   final VoidCallback? onPressed;

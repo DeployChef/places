@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:places/ui/screens/res/themes.dart';
 
-/// текстовый leading для appBar - Отмена экран Новое место
+/// Текстовый leading для appBar - Отмена экран Новое место.
 class TitleLeadingAppBar extends StatelessWidget {
   final String title;
 

@@ -5,7 +5,7 @@ import 'package:places/domain/categories.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/mocks.dart';
 import 'package:places/ui/components/button_save.dart';
-import 'package:places/ui/components/icon_leading_appbar.dart';
+import 'package:places/ui/components/small_leading_icon.dart';
 import 'package:places/ui/components/icon_svg.dart';
 import 'package:places/ui/screens/res/assets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -267,7 +267,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
   }
 
   /// очистка выбранных категорий
-  _clearCategories() {
+  void _clearCategories() {
     _categories.forEach((c) => c.isSelected = false);
   }
 

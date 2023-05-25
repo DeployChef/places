@@ -1,19 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:places/ui/screens/res/themes.dart';
 import 'package:places/ui/screens/res/sizes.dart';
+import 'package:places/ui/screens/res/themes.dart';
 
-/// кнопка сохранить / создать при добавлении нового места
+/// Кнопка сохранить / создать при добавлении нового места.
 class ButtonSave extends StatelessWidget {
   final String title;
   final bool isButtonEnabled;
   final VoidCallback? onPressed;
 
-  ButtonSave({
+  const ButtonSave({
     Key? key,
     required this.title,
     required this.isButtonEnabled,
     this.onPressed,
   }) : super(key: key);
+
+  /// Цвет кнопки в зависимоти от её состояния.
+  Color _getButtonColor(BuildContext context) {
+    return isButtonEnabled ? Theme.of(context).floatingActionButtonTheme.backgroundColor! : Theme.of(context).primaryColorLight;
+  }
+
+  /// Цвет названия кнопки в зависимоти от её состояния.
+  TextStyle _buildButtonColorTitle(BuildContext context) {
+    return isButtonEnabled ? Theme.of(context).textTheme.button! : Theme.of(context).textTheme.button!.copyWith(color: Theme.of(context).colorScheme.inactiveBlack);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +32,7 @@ class ButtonSave extends StatelessWidget {
       width: double.infinity,
       child: FloatingActionButton.extended(
         onPressed: onPressed,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(radiusButton),
           ),
@@ -34,25 +44,5 @@ class ButtonSave extends StatelessWidget {
         backgroundColor: _getButtonColor(context),
       ),
     );
-  }
-
-  /// цвет кнопки в зависимоти от её состояния
-  Color _getButtonColor(BuildContext context) {
-    if (isButtonEnabled) {
-      return Theme.of(context).floatingActionButtonTheme.backgroundColor!;
-    } else {
-      return Theme.of(context).primaryColorLight;
-    }
-  }
-
-  /// цвет названия кнопки в зависимоти от её состояния
-  TextStyle _buildButtonColorTitle(BuildContext context) {
-    if (isButtonEnabled) {
-      return Theme.of(context).textTheme.button!;
-    } else {
-      return Theme.of(context).textTheme.button!.copyWith(
-            color: Theme.of(context).colorScheme.inactiveBlack,
-          );
-    }
   }
 }

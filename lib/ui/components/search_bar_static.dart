@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:places/ui/components/icon_svg.dart';
 import 'package:places/ui/screens/res/assets.dart';
 import 'package:places/ui/screens/res/sizes.dart';
@@ -15,6 +16,10 @@ class SearchBarStatic extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final locale = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
+    final backgroundColor = theme.colorScheme.background;
+
     return ClipRRect(
       borderRadius: BorderRadius.circular(radiusSearchInput),
       child: Stack(
@@ -25,21 +30,18 @@ class SearchBarStatic extends StatelessWidget {
             height: heightInput,
             child: Row(
               mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 sizedBoxW12,
                 IconSvg(
                   icon: icSearch,
-                  width: 24,
-                  height: 24,
-                  color: Theme.of(context).colorScheme.background, //.inactiveBlack,
+                  color: backgroundColor, // .inactiveBlack,.
                 ),
                 sizedBoxW12,
                 Text(
-                  "Поиск",
-                  style: Theme.of(context).primaryTextTheme.subtitle1!.copyWith(
-                        color: Theme.of(context).colorScheme.background,
-                      ), //.inactiveBlack),
+                  locale.search,
+                  style: theme.primaryTextTheme.subtitle1!.copyWith(
+                    color: backgroundColor,
+                  ), // .inactiveBlack),.
                 ),
               ],
             ),
@@ -60,11 +62,11 @@ class SearchBarStatic extends StatelessWidget {
               padding: EdgeInsets.zero,
               icon: IconSvg(
                 icon: icFilter,
-                color: Theme.of(context).accentColor,
+                color: theme.accentColor,
               ),
               onPressed: onPressedFilter,
               splashRadius: 20,
-              splashColor: Theme.of(context).accentColor.withOpacity(0.25),
+              splashColor: theme.accentColor.withOpacity(0.25),
             ),
           ),
         ],
