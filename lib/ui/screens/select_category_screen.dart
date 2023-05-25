@@ -6,6 +6,7 @@ import 'package:places/ui/components/icon_leading_appbar.dart';
 import 'package:places/ui/components/icon_svg.dart';
 import 'package:places/ui/screens/res/assets.dart';
 import 'package:places/ui/screens/res/sizes.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SelectCategoryScreen extends StatefulWidget {
   final String? selectedCategory;
@@ -21,14 +22,17 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
   bool _isButtonEnabled = false;
   VoidCallback? _onPressed;
 
-  /// категории
-  List<Categories> _categories = categories;
+  late AppLocalizations _locale;
+  List<Categories> _categories = categories.toList();
 
   /// название выбранной категории
   String? _selectedCategory;
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
+    _locale = AppLocalizations.of(context)!;
+
     if (widget.selectedCategory != null && _selectedCategory == null) {
       _isButtonEnabled = true;
       _selectedCategory = widget.selectedCategory;

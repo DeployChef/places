@@ -1,58 +1,97 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:places/domain/categories.dart';
+import 'package:places/domain/sight.dart';
 import 'package:places/mocks.dart';
+import 'package:places/ui/components/button_save.dart';
+import 'package:places/ui/components/icon_leading_appbar.dart';
 import 'package:places/ui/components/icon_svg.dart';
 import 'package:places/ui/screens/res/assets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-class Category {
-  String name;
-  String iconPath;
-  bool isSelected;
-
-  Category({required this.name, required this.iconPath, this.isSelected = false});
-}
-
-class CenterPoint {
-  final double lat;
-  final double lon;
-  final String name;
-
-  CenterPoint({required this.lat, required this.lon, required this.name});
-}
+import 'package:places/ui/screens/utils/filter_utils.dart';
 
 class FiltersScreen extends StatefulWidget {
-  const FiltersScreen({Key? key}) : super(key: key);
+  final FilterSettings? filter;
+
+  const FiltersScreen({Key? key, this.filter}) : super(key: key);
 
   @override
-  State<FiltersScreen> createState() => _FiltersScreenState();
+  _FiltersScreenState createState() => _FiltersScreenState();
 }
 
 class _FiltersScreenState extends State<FiltersScreen> {
   late AppLocalizations _locale;
-  late List<Category> _categories = [
-    Category(name: _locale.hotel, iconPath: icHotel),
-    Category(name: _locale.restaurant, iconPath: icRestaurant),
-    Category(name: _locale.specialPlace, iconPath: icParticular),
-    Category(name: _locale.park, iconPath: icPark),
-    Category(name: _locale.museum, iconPath: icMuseum),
-    Category(name: _locale.cafe, iconPath: icCafe),
-  ];
+  List<Categories> _categories = categories.toList();
+
+  /// нефильтрованные данные если юзер не настраивал фильтр
+  final List<Sight> _fullData = mocks;
+
+  /// отфильтрованные данные
+  List<Sight> _filteredData = [];
+
+  /// только выбранные категории для функции поиска и передачи на другой экран
+  List<Categories> _filteredCategories = [];
+
+  /// стартовые данные для слайдера в метрах
+  RangeValues _startDataSlider() => RangeValues(100, 3000);
+
+  VoidCallback? _acceptFilter;
+  bool _isButtonEnabled = false;
 
   RangeValues _currentRangeValues = RangeValues(100, 3000);
-  int _sightCount = 0;
 
   /// центральная точка поиска
   /// красная площадь для теста
-  final CenterPoint _moscowPoint = CenterPoint(
+  final CenterPoint _startSearchPoint = CenterPoint(
     lat: 55.753564,
     lon: 37.621085,
     name: 'Москва, Красная площадь',
   );
 
   @override
+  void initState() {
+    if (widget.filter != null) {
+      _filteredCategories = widget.filter!.categories;
+      _currentRangeValues = widget.filter!.distance;
+      _startCategories(widget.filter!.categories);
+      _filteredData = filterData(
+        data: _fullData,
+        categories: _filteredCategories,
+        centerPoint: _startSearchPoint,
+        distance: _currentRangeValues,
+      );
+    } else {
+      _currentRangeValues = _startDataSlider();
+    }
+    super.initState();
+  }
+
+  void _startCategories(List<Categories> selectedCategories) {
+    selectedCategories.forEach((element) => _categories.where((c) => c.name == element.name).forEach((fi) {
+          fi.isSelected = true;
+        }));
+  }
+
+  @override
   Widget build(BuildContext context) {
+    if (_filteredData.isNotEmpty) {
+      _isButtonEnabled = true;
+
+      _acceptFilter = () {
+        final _filterSettings = FilterSettings(
+          categories: _filteredCategories,
+          distance: _currentRangeValues,
+          centerPoint: _startSearchPoint,
+        );
+
+        Navigator.pop(context, _filterSettings);
+      };
+    } else {
+      _isButtonEnabled = false;
+      _acceptFilter = null;
+    }
+
     var theme = Theme.of(context);
     _locale = AppLocalizations.of(context)!;
 
@@ -68,18 +107,10 @@ class _FiltersScreenState extends State<FiltersScreen> {
           ],
         ),
       ),
-      floatingActionButton: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 16),
-        width: double.infinity,
-        child: FloatingActionButton.extended(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(10),
-            ),
-          ),
-          onPressed: () {},
-          label: Text("${_locale.show.toUpperCase()} ($_sightCount)"),
-        ),
+      floatingActionButton: ButtonSave(
+        title: "${_locale.show.toUpperCase()} (${_filteredData.length})",
+        isButtonEnabled: _isButtonEnabled,
+        onPressed: _acceptFilter,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
@@ -113,7 +144,12 @@ class _FiltersScreenState extends State<FiltersScreen> {
             onChanged: (newValue) {
               setState(() {
                 _currentRangeValues = newValue;
-                _findSight();
+                _filteredData = filterData(
+                  data: _fullData, // база карточек
+                  categories: _filteredCategories, // выбранные категории
+                  centerPoint: _startSearchPoint, // точка отсчёта расстояния
+                  distance: _currentRangeValues,
+                );
               });
             },
           ),
@@ -153,7 +189,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
     );
   }
 
-  Container _buildCategory(ThemeData theme, Category category) {
+  Container _buildCategory(ThemeData theme, Categories category) {
     return Container(
       height: 96,
       width: 92,
@@ -175,7 +211,13 @@ class _FiltersScreenState extends State<FiltersScreen> {
                     onPressed: () {
                       setState(() {
                         category.isSelected = !category.isSelected;
-                        _findSight();
+                        _filteredCategories = _filterCategories();
+                        _filteredData = filterData(
+                          data: _fullData,
+                          categories: _filteredCategories,
+                          centerPoint: _startSearchPoint,
+                          distance: _currentRangeValues,
+                        );
                       });
                     },
                     icon: SvgPicture.asset(
@@ -211,50 +253,32 @@ class _FiltersScreenState extends State<FiltersScreen> {
           shape: CircleBorder(),
           color: theme.colorScheme.primary,
         ),
-        child: Positioned(
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          child: SvgPicture.asset(
-            icTick,
-            color: theme.primaryColor,
-          ),
+        child: SvgPicture.asset(
+          icTick,
+          color: theme.primaryColor,
         ),
       ),
     );
   }
 
-  bool _arePointsNear(double sightLat, double sightLon, CenterPoint centerPoint, RangeValues distance) {
-    const ky = 40000 / 360;
-    final kx = cos(pi * centerPoint.lat / 180.0) * ky;
-    final dx = (centerPoint.lon - sightLon).abs() * kx;
-    final dy = (centerPoint.lat - sightLat).abs() * ky;
-    final d = sqrt(dx * dx + dy * dy);
-    final minDistance = (distance.start / 1000).round();
-    final maxDistance = (distance.end / 1000).round();
-
-    return d >= minDistance && d <= maxDistance;
+  /// оставляем только выбранные категории и передаем их в поиск
+  List<Categories> _filterCategories() {
+    return _categories.where((c) => c.isSelected).toList();
   }
 
-  void _findSight() {
-    var selectedCategoryTypes = _categories.where((element) => element.isSelected).map((e) => e.name.toLowerCase()).toList();
-
-    var count = mocks.where((c) => selectedCategoryTypes.any((element) => element == c.type) && _arePointsNear(c.lat, c.lon, _moscowPoint, _currentRangeValues)).toList().length;
-
-    setState(() {
-      _sightCount = count;
-    });
+  /// очистка выбранных категорий
+  _clearCategories() {
+    _categories.forEach((c) => c.isSelected = false);
   }
 
   AppBar _createSettingsAppbar(ThemeData theme) {
     return AppBar(
-      leading: Container(
-          padding: const EdgeInsets.only(left: 16, right: 16),
-          child: IconSvg(
-            icon: icArrow,
-            color: theme.colorScheme.onPrimary,
-          )),
+      leading: SmallLeadingIcon(
+        icon: icArrow,
+        onPressed: () {
+          Navigator.pop(context, widget.filter);
+        },
+      ),
       title: Align(
         alignment: Alignment.centerRight,
         child: TextButton(
@@ -266,11 +290,9 @@ class _FiltersScreenState extends State<FiltersScreen> {
           ),
           onPressed: () {
             setState(() {
-              _categories.forEach(
-                (element) => element.isSelected = false,
-              );
-              _currentRangeValues = RangeValues(100, 3000);
-              _findSight();
+              _clearCategories();
+              _currentRangeValues = _startDataSlider();
+              _filteredData.clear();
             });
           },
         ),

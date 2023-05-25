@@ -38,11 +38,11 @@ final List<Sight> mocks = <Sight>[
   ),
 ];
 
-final List<Categories> categories = [
-  Categories(id: 1, name: 'Отель', icon: icHotel),
-  Categories(id: 2, name: 'Ресторан', icon: icRestaurant),
-  Categories(id: 3, name: 'Особое место', icon: icParticular),
-  Categories(id: 4, name: 'Парк', icon: icPark),
-  Categories(id: 5, name: 'Музей', icon: icMuseum),
-  Categories(id: 6, name: 'Кафе', icon: icCafe),
+List<Categories> categories = [
+  Categories(name: "Отель", iconPath: icHotel),
+  Categories(name: "Ресторан", iconPath: icRestaurant),
+  Categories(name: "Особое место", iconPath: icParticular),
+  Categories(name: "Парк", iconPath: icPark),
+  Categories(name: "Музей", iconPath: icMuseum),
+  Categories(name: "Кафе", iconPath: icCafe),
 ];

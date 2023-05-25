@@ -1,11 +1,7 @@
 class Categories {
-  Categories({
-    required this.id,
-    required this.name,
-    required this.icon,
-  });
+  String name;
+  String iconPath;
+  bool isSelected;
 
-  final int id;
-  final String name;
-  final String icon;
+  Categories({required this.name, required this.iconPath, this.isSelected = false});
 }

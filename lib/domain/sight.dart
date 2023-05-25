@@ -1,3 +1,5 @@
+import 'package:places/domain/categories.dart';
+
 class Sight {
   final int id;
   final String name;

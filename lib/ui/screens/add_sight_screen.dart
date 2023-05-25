@@ -415,7 +415,7 @@ class _AddSightScreenState extends State<AddSightScreen> {
 
   String? _validateDetails(String? value) {
     if (value == null || value.isEmpty) return errorEmptyDetails;
-    if (value.length < 100) return errorShortDetails;
+    if (value.length < 1) return errorShortDetails;
 
     return null;
   }
@@ -447,7 +447,7 @@ class _AddSightScreenState extends State<AddSightScreen> {
                   style: Theme.of(context).primaryTextTheme.subtitle1,
                 ),
                 Text(
-                  '${details.substring(0, 100)} ...',
+                  '${details.substring(0, 1)} ...',
                   style: Theme.of(context).primaryTextTheme.subtitle1,
                 ),
                 sizedBoxH12,
@@ -464,12 +464,8 @@ class _AddSightScreenState extends State<AddSightScreen> {
             actions: [
               TextButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SightListScreen(),
-                    ),
-                  );
+                  Navigator.pop(context);
+                  Navigator.pop(context);
                 },
                 child: Text(
                   'Ok',

@@ -58,8 +58,7 @@ class BackButton extends StatelessWidget {
               color: Theme.of(context).scaffoldBackgroundColor,
               child: TextButton(
                 onPressed: () {
-                  // ignore: avoid_print
-                  print('Press back');
+                  Navigator.pop(context);
                 },
                 child: Icon(
                   Icons.arrow_back_ios_new_rounded,
@@ -137,7 +136,7 @@ class DetailsContent extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              IconButton(
+              IconExButton(
                 text: locale.calendarButtonText,
                 iconPath: icCalendar,
                 onPressed: () {
@@ -145,7 +144,7 @@ class DetailsContent extends StatelessWidget {
                   print('Press ${locale.calendarButtonText}');
                 },
               ),
-              IconButton(
+              IconExButton(
                 text: locale.favoriteButtonText,
                 iconPath: icHeart,
                 onPressed: () {
@@ -161,12 +160,12 @@ class DetailsContent extends StatelessWidget {
   }
 }
 
-class IconButton extends StatelessWidget {
+class IconExButton extends StatelessWidget {
   final String text;
   final String iconPath;
   final VoidCallback? onPressed;
 
-  const IconButton({
+  const IconExButton({
     Key? key,
     required this.text,
     required this.iconPath,

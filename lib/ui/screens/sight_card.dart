@@ -4,6 +4,7 @@ import 'package:places/domain/enums/card_type.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/ui/components/icon_action_button.dart';
 import 'package:places/ui/screens/res/assets.dart';
+import 'package:places/ui/screens/sight_details.dart';
 
 class SightCard extends StatelessWidget {
   final Sight model;
@@ -39,8 +40,12 @@ class SightCard extends StatelessWidget {
                 type: MaterialType.transparency,
                 child: InkWell(
                   onTap: () {
-                    // ignore: avoid_print
-                    print("card tap");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SightDetails(model: model),
+                      ),
+                    );
                   },
                 ),
               ),
